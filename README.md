@@ -1,2 +1,2 @@
 # OASSIS
-An open source groundbreakingg crowd mining platform
+An open source groundbreaking crowd mining platform
