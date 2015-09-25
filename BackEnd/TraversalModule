@@ -7,7 +7,7 @@ abstract public class TraversalModule{
 
 	TupleQueryResult validAssignments;
 
-	public TraversalModuleTwo(TupleQueryResult validAssignments){
+	public TraversalModule(TupleQueryResult validAssignments){
 		this.validAssignments = validAssignments;
 	}
 	
