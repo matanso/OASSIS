@@ -9,7 +9,7 @@ import org.openrdf.query.BindingSet;
 import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.query.TupleQueryResult;
 
-public class NaiveAlgortihm extends TraversalModule{
+public class NaiveAlgorithm extends TraversalModule{
 	
 	class Assignment
 	{
@@ -26,7 +26,7 @@ public class NaiveAlgortihm extends TraversalModule{
 	Map<BindingSet, Assignment> answers;
 	List<BindingSet> keys; //a list to hold all the keys of the map, to use for random access. (because we have to make this list everytime next is called, so I made it a field to save time)
 	
-	public NaiveAlgortihm(TupleQueryResult validAssignments) {
+	public NaiveAlgorithm(TupleQueryResult validAssignments) {
 		super(validAssignments);
 		this.answers = new HashMap<BindingSet, Assignment>();
 		try {
