@@ -13,7 +13,15 @@ public class HelloServlet extends javax.servlet.http.HttpServlet
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException
     {
-        PrintWriter writer = response.getWriter();
-        writer.print("Success");
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>Oassis</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>Test</h1>");
+        out.println("</body>");
+        out.println("</html>");
     }
 }
