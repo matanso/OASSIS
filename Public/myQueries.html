@@ -8,7 +8,7 @@
 <head>
     <title>Oassis</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
-    <script src="assets/js/profileController.js"></script>
+    <script src="assets/js/queriesController.js"></script>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!--[if lte IE 8]>
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
 </head>
 <body class="no-sidebar">
-<div ng-app="profileApp" ng-controller="profileController">
+<div ng-app="queriesApp" ng-controller="queriesController">
 
     <div id="page-wrapper">
 
@@ -38,8 +38,8 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="index.html#about">About</a></li>
                         <li><a href="index.html#main-wrapper">Contribute</a></li>
-                        <li><a href="myQueries.html">My queries</a></li>
-                        <li class="current"><a href="Profile.html">My profile</a></li>
+                        <li class="current"><a href="myQueries.html">My queries</a></li>
+                        <li><a href="Profile.html">My profile</a></li>
                         <li><a href="logout.html">Logout</a></li>
                     </ul>
                 </nav>
@@ -54,15 +54,15 @@
 
                     <!-- Content -->
                     <article>
-                        <p>
 
-                        <h2>{{profile.name}}</h2>
-
-                        <img ng-src="{{profile.pic}}" height="142px">
-                        </p>
-                        Queries submitted: {{profile.Queries}}
+                        <h2>My queries</h2>
                         <br/>
-                        Questions answered: {{profile.Answers}}
+                        <ul>
+                            <p ng-repeat-start="query in queries">
+                            <li><a ng-href="{{'viewQuery.html?queryId=' + query.id}}"><h3>{{query.name}}</h3></a></li>
+                            <progress ng-repeat-end value="{{query.progress}}"></progress>
+                            </p>
+                        </ul>
                     </article>
 
                 </div>
