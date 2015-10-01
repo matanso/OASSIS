@@ -12,6 +12,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>Servlets.logout</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>loggedIn</servlet-name>
         <servlet-class>Servlets.loggedInCheck</servlet-class>
     </servlet>
@@ -34,6 +39,11 @@
     <servlet-mapping>
         <servlet-name>login</servlet-name>
         <url-pattern>/app/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/app/logout</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
