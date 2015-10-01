@@ -29,7 +29,7 @@ public class login extends HttpServlet
             session.setAttribute("userId", 1);
             try
             {
-                result.put("success", true);
+                result.put("success", 0);
                 result.put("userId", 1);
             } catch (JSONException e)
             {

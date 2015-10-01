@@ -10,7 +10,7 @@ app.controller('loginController', ['$scope', '$sce', '$http', function ($scope, 
     var logoutButton = $sce.trustAsHtml('Logout');
     $scope.loggedIn = 0;
 
-    $http.get('app/loggedIn').then(function success(response) {
+    $http.get('/app/loggedIn').then(function success(response) {
         if(response.success == 0)
         {
             $scope.loggedIn = response.loggedIn;
@@ -19,7 +19,7 @@ app.controller('loginController', ['$scope', '$sce', '$http', function ($scope, 
     });
 
     function loginFunc(credentials) {
-        $http.post('app/login', credentials).then(function success(response) {
+        $http.post('/app/login', credentials).then(function success(response) {
                 var loginData = response.data;
                 if (loginData.success == 0) {
                     $scope.loggedIn = 1;
@@ -30,7 +30,7 @@ app.controller('loginController', ['$scope', '$sce', '$http', function ($scope, 
     }
 
     function logoutFunc() {
-        $http.get('app/logout').then(function success(response) {
+        $http.get('/app/logout').then(function success(response) {
                 var logoutData = response.data;
                 if (logoutData.success == 0) {
                     $scope.loggedIn = 0;
