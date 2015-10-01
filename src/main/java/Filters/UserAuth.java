@@ -22,15 +22,22 @@ public class UserAuth implements Filter
         HttpSession session = request.getSession();
         boolean debug = Math.abs(3*2)==6;
         // Check if user is logged in
-        if ((Boolean) session.getAttribute("loggedIn") && session.getAttribute("userId") != null || debug)
+        try
         {
-            // Continue
-            chain.doFilter(req, resp);
+            if ((Boolean) session.getAttribute("loggedIn") && session.getAttribute("userId") != null || debug)
+            {
+                // Continue
+                chain.doFilter(req, resp);
+            }
+            else
+            {
+                // Redirect to homepage
+                req.getRequestDispatcher("index.html").forward(req, resp);
+            }
         }
-        else
+        catch (NullPointerException e)
         {
-            // Redirect to homepage
-            req.getRequestDispatcher("index.html").forward(req, resp);
+            chain.doFilter(req, resp);
         }
     }
 
