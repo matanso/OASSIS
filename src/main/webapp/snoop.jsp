@@ -109,7 +109,7 @@ MemoryPoolMXBean item = (MemoryPoolMXBean) iter.next();
 	<TD><%= request.getProtocol() %></TD>
 </TR>
 <TR>
-	<TH align=right>Servlet path:</TH>
+	<TH align=right>Servlets.Servlet path:</TH>
 	<TD><%= request.getServletPath() %></TD>
 </TR>
 <TR>

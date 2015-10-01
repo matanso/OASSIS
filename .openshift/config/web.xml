@@ -32,7 +32,7 @@
   <!-- They should go in the "/WEB-INF/web.xml" file in your application.   -->
 
 
-  <!-- ================== Built In Servlet Definitions ==================== -->
+  <!-- ================== Built In Servlets.Servlet Definitions ==================== -->
 
 
   <!-- The default servlet for all web applications, that serves static     -->
@@ -243,7 +243,7 @@
 
 
   <!-- NOTE: An SSI Filter is also available as an alternative SSI          -->
-  <!-- implementation. Use either the Servlet or the Filter but NOT both.   -->
+  <!-- implementation. Use either the Servlets.Servlet or the Filter but NOT both.   -->
   <!--                                                                      -->
   <!-- Server Side Includes processing servlet, which processes SSI         -->
   <!-- directives in HTML pages consistent with similar support in web      -->
@@ -347,7 +347,7 @@
 -->
 
 
-  <!-- ================ Built In Servlet Mappings ========================= -->
+  <!-- ================ Built In Servlets.Servlet Mappings ========================= -->
 
 
   <!-- The servlet mappings for the built in servlets defined above.  Note  -->
@@ -416,8 +416,8 @@
 -->
 
 
-  <!-- NOTE: An SSI Servlet is also available as an alternative SSI         -->
-  <!-- implementation. Use either the Servlet or the Filter but NOT both.   -->
+  <!-- NOTE: An SSI Servlets.Servlet is also available as an alternative SSI         -->
+  <!-- implementation. Use either the Servlets.Servlet or the Filter but NOT both.   -->
   <!--                                                                      -->
   <!-- Server Side Includes processing filter, which processes SSI          -->
   <!-- directives in HTML pages consistent with similar support in web      -->

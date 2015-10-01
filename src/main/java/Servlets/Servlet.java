@@ -1,3 +1,5 @@
+package Servlets;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +11,7 @@ import java.io.PrintWriter;
 /**
  * Created by matan on 01/10/15.
  */
-@WebServlet(name = "Servlet")
+@WebServlet(name = "Servlets.Servlet")
 public class Servlet extends HttpServlet
 {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException

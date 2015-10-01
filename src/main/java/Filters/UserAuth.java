@@ -1,3 +1,5 @@
+package Filters;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -7,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by matan on 01/10/15.
  */
-@WebFilter(filterName = "UserAuth")
+@WebFilter(filterName = "Filters.UserAuth")
 public class UserAuth implements Filter
 {
     public void destroy()
