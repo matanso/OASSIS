@@ -11,5 +11,6 @@
         <servlet-name>HelloServlet</servlet-name>
         <url-pattern>/test</url-pattern>
         <url-pattern>test</url-pattern>
+        <url-pattern>/testttest</url-pattern>
     </servlet-mapping>
 </web-app>
