@@ -21,6 +21,11 @@
         <servlet-class>Servlets.loggedInCheck</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>userInfo</servlet-name>
+        <servlet-class>Servlets.userInfo</servlet-class>
+    </servlet>
+
     <filter>
         <filter-name>staticFilter</filter-name>
         <filter-class>Filters.UserAuth</filter-class>
@@ -49,6 +54,11 @@
     <servlet-mapping>
         <servlet-name>loggedIn</servlet-name>
         <url-pattern>/app/loggedIn</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>userInfo</servlet-name>
+        <url-pattern>/app/getUserInfo</url-pattern>
     </servlet-mapping>
 
 

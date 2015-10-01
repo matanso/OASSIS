@@ -20,13 +20,16 @@ public class UserAuth implements Filter
     {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpSession session = request.getSession();
-        boolean debug = Math.abs(3*2)==6;
-        // Check if user is logged in
+        String path = request.getRequestURI().substring(request.getContextPath().length());
         try
         {
-            if ((Boolean) session.getAttribute("loggedIn") && session.getAttribute("userId") != null || debug)
+            if ((Boolean) session.getAttribute("loggedIn") && session.getAttribute("userId") != null)
             {
                 // Continue
+                chain.doFilter(req, resp);
+            }
+            else if(path.startsWith("/pages/assets/") || path.startsWith("/pages/images/") || path.startsWith("/pages/index.html"))
+            {
                 chain.doFilter(req, resp);
             }
             else
