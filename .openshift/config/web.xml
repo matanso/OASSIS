@@ -4371,7 +4371,7 @@
   <!-- to use within your application.                                       -->
 
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>pages/index.html</welcome-file>
         <welcome-file>index.htm</welcome-file>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
