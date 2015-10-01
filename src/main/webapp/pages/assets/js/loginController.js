@@ -11,9 +11,8 @@ app.controller('loginController', ['$scope', '$sce', '$http', function ($scope, 
     $scope.loggedIn = 0;
 
     $http.get('/app/loggedIn').then(function success(response) {
-        if(response.success == 0)
-        {
-            $scope.loggedIn = response.loggedIn;
+        if(response.success == 0) {
+            $scope.loggedIn = +response.loggedIn;
         }
     }, function error(response) {
     });
