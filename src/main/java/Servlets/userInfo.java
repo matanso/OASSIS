@@ -54,7 +54,7 @@ public class userInfo extends HttpServlet
         // Some magic happens and...
         try
         {
-            result.put("id", userId);
+            result.put("userId", userId);
             result.put("type", 420);
             result.put("name", "Matan Sokolovsky");
             result.put("Queries", 3);
