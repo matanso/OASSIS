@@ -20,9 +20,9 @@ public class UserAuth implements Filter
     {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpSession session = request.getSession();
-        boolean debug = true;
+        boolean debug = Math.abs(3*2)==6;
         // Check if user is logged in
-        if (session.getAttribute("loggedIn") == "true" && session.getAttribute("userId") != null || debug)
+        if ((Boolean) session.getAttribute("loggedIn") && session.getAttribute("userId") != null || debug)
         {
             // Continue
             chain.doFilter(req, resp);

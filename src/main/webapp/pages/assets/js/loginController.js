@@ -9,6 +9,15 @@ app.controller('loginController', ['$scope', '$sce', '$http', function ($scope, 
     var loginButton = $sce.trustAsHtml('<img src="images/google_login.png" alt="Sign in with Google" style="PADDING-TOP: 12px; PADDING-BOTTOM: 12px">');
     var logoutButton = $sce.trustAsHtml('Logout');
     $scope.loggedIn = 0;
+
+    $http.get('app/loggedIn').then(function success(response) {
+        if(response.success == 0)
+        {
+            $scope.loggedIn = response.loggedIn;
+        }
+    }, function error(response) {
+    });
+
     function loginFunc(credentials) {
         $http.post('app/login', credentials).then(function success(response) {
                 var loginData = response.data;

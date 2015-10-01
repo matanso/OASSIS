@@ -20,7 +20,7 @@ public class StaticFilter implements Filter
         HttpServletRequest request = (HttpServletRequest) req;
         String path = request.getRequestURI().substring(request.getContextPath().length());
 
-        if (path.startsWith("/static")) {
+        if (path.startsWith("/app")) {
             chain.doFilter(req, resp); // Goes to default servlet.
         } else {
             request.getRequestDispatcher("/pages" + path).forward(req, resp);
