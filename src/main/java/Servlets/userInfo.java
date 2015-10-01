@@ -64,5 +64,6 @@ public class userInfo extends HttpServlet
         {
             e.printStackTrace();
         }
+        response.getWriter().print(result.toString());
     }
 }
