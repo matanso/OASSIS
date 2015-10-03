@@ -30,7 +30,7 @@ public class NaiveAlgorithm extends TraversalModule {
 	
 
 	// +++++++++++++Fields Here+++++++++
-	private static String DB_PATH = SPARQLQueryManager.getDbPath();/*where the graphDb goes.*/
+	private String DB_PATH;/*where the graphDb goes.*/
 	private GraphDatabaseService graphDB;
 	
 	private List<BindingSet> undecidedKeys; /* a list of all undecided assignments to the query.*/
@@ -47,11 +47,12 @@ public class NaiveAlgorithm extends TraversalModule {
 	private JSONSerializer serializer = new JSONSerializer();
 	
 	
-	public NaiveAlgorithm(TupleQueryResult validAssignments) {
+	public NaiveAlgorithm(TupleQueryResult validAssignments, String DBPath) {
 		/*first off we start a graphDB. then we go over all valid assignments and add them all to undecided keys.
 		 * We have nodeDic to keep track of all entered nodes, one for each assignment which we also do in the 
 		 * while loop (enter a node with it's relevant matadata using json and Gson, for each assignment) */
 		super(validAssignments);
+		this.DB_PATH = DBPath;
 		this.graphDB = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
 		this.nodeDic = new HashMap<BindingSet, Node>();
 		this.MSP = new ArrayList<BindingSet>();
@@ -84,7 +85,7 @@ public class NaiveAlgorithm extends TraversalModule {
 	public BindingSet next(int userID) {
 		/*TODO: maybe make the node making lazy, that is only make the node when the assignment is first asked.
 		 * input: userID
-		 * output: next assignment to query this user.*/
+		 * output: next assignment to query this user, null if none are left.*/
 		String userIDString = new Integer(userID).toString();
 		Random random = new Random();
 		BindingSet randomKey = null;
@@ -120,7 +121,6 @@ public class NaiveAlgorithm extends TraversalModule {
 			tx.finish();
 		}
 		if (listOfAssignments.isEmpty()){
-			System.out.println("out of assignments for user = " + userID);
 			return null;
 		}else{
 			return randomKey;
@@ -133,7 +133,6 @@ public class NaiveAlgorithm extends TraversalModule {
 		/* input: assignment and userID and his support for said assignment.
 		   assumes assignment hasnt been answered by user yet.
 		   output: */
-		System.out.println("starting update..");
 		String userIDString = new Integer(userID).toString();
 		int aggAnswer;
 		Map<String, Integer> tempDic = null;
