@@ -20,8 +20,6 @@ public class NaiveAlgorithmTest {
 	public static void main(String[] args) throws RepositoryException, RDFParseException, IOException, MalformedQueryException, QueryEvaluationException {
 		//note: TupleQueryResult has to have it's connection open in order to access.
 			
-		BindingSet assignment = null;
-		NaiveAlgorithm naiveAlgo = null;
 
 		String queryString = "SELECT ?x ?y WHERE { ?x ?p ?y } ";
 
@@ -50,32 +48,41 @@ public class NaiveAlgorithmTest {
 		
 		/*test 1: ontology has 2 entries. userID 1 asks for question makes it significant then asks for another question and makes that significant too.*/
 		
-		Wrapper.init(ontology3, "/Users/duanenickull/Software/neo4j-community-1.8.M01/");
+		Wrapper.init(ontology3);
+		
+		Wrapper.submitQuery(queryString, "/Users/duanenickull/Software/neo4j-community-1.8.M01/");
+		
 		BindingSet bindingSet = (Wrapper.getQuestion(queryString, 1)).bindingSet;
+		System.out.print("for user = " + 1 + " assignment = ");
 		SPARQLQueryManager.printBindingSet(bindingSet);
 		Wrapper.answerQuestion(bindingSet, queryString, 1, -1);
 		
 		
 		bindingSet = (Wrapper.getQuestion(queryString,  1)).bindingSet;
+		System.out.print("for user = " + 1 + " assignment = ");
 		SPARQLQueryManager.printBindingSet(bindingSet);
 		Wrapper.answerQuestion(bindingSet, queryString, 1, 1);
 		
 		
 		bindingSet = (Wrapper.getQuestion(queryString,  2)).bindingSet;
+		System.out.print("for user = " + 2 + " assignment = ");
 		SPARQLQueryManager.printBindingSet(bindingSet);
 		Wrapper.answerQuestion(bindingSet, queryString, 2, 30);
 		
 		
 		bindingSet = (Wrapper.getQuestion(queryString,  1)).bindingSet;
+		System.out.print("for user = " + 1 + " assignment = ");
 		SPARQLQueryManager.printBindingSet(bindingSet);
 		Wrapper.answerQuestion(bindingSet, queryString, 1, 30);
 		
 		
 		bindingSet = (Wrapper.getQuestion(queryString,  2)).bindingSet;
+		System.out.print("for user = " + 2 + " assignment = ");
 		SPARQLQueryManager.printBindingSet(bindingSet);
 		Wrapper.answerQuestion(bindingSet, queryString, 2, 30);
 		
 		bindingSet = (Wrapper.getQuestion(queryString,  2)).bindingSet;
+		System.out.print("for user = " + 2 + " assignment = ");
 		SPARQLQueryManager.printBindingSet(bindingSet);
 		Wrapper.answerQuestion(bindingSet, queryString, 2, 30);
 		
