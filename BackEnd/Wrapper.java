@@ -27,10 +27,12 @@ public class Wrapper {
 	
 	
 	
-	private static Map<String, NaiveAlgorithm> algoDic = new HashMap<String, NaiveAlgorithm>();/*query string is key, the algo that goes with it is value*/
-	private static Map<Integer, String> queryStringDic = new HashMap<Integer, String>();/*queryID is key, the query string is value.*/
+	private static Map<String, TraversalModule> algoDic = 
+							new HashMap<String, TraversalModule>();/*query string is key, the algo that goes with it is value
+																	* private static Map<Integer, String> queryStringDic = 
+	  																* new HashMap<Integer, String>()*/
 	
-	public static int init(String ontology, String DBPath){
+	public static int init(String ontology){
 		/* input: ontology is the ontology that we'll query, DBPath is where to store the graphDB.
 		 * output: 0 = success
 		   		   1 = Repository Exception - if something went wrong with connecting to rep (such as rep doesn't exist)
@@ -39,11 +41,41 @@ public class Wrapper {
 		   		   4 = if connection couldn't close.
 		   		   */
 		int res;
-		System.out.println("Wrapper.init");
-		res =  SPARQLQueryManager.init(ontology, DBPath);
-		System.out.println("wrapper done init");
+		/*System.out.println("Wrapper.init starting..");*/
+		res =  SPARQLQueryManager.init(ontology);
+		/*System.out.println("Wrapper.init done.");*/
 		return res;
 	}
+	
+	
+	public static Result submitQuery(String query, String DBPath){
+		/*input: query is in string format, DBPath is the path where we should save the neo4j server.
+		 * output: Result class where its validAnswer field means:
+		 *         0 = success 
+		 * 		   1 = couldn't connect to repository.
+		 * 		   2 = query is malformed.
+		 *         3 = query couldn't be answered.*/
+		
+		
+		/*System.out.println("Wrapper.submitQuery starting..");*/
+		TupleQueryResult queryResult;
+		try {
+			queryResult = SPARQLQueryManager.evaluateQuery(query);
+		} catch (RepositoryException e) {
+			return new Result(1, null);
+		} catch (MalformedQueryException e) {
+			return new Result(2, null);
+		} catch (QueryEvaluationException e) {
+			return new Result(3, null);
+		}
+		
+		TraversalModule algo = new NaiveAlgorithm(queryResult, DBPath);
+		algoDic.put(query, algo);
+		/*System.out.println("Wrapper.submitQuery done.");*/
+		return new Result();
+	}
+	
+	
 	
 	public static Result getQuestion(String query, int userID){
 		/* input: query representing the question to ask user that's represented by userID. 
@@ -54,26 +86,12 @@ public class Wrapper {
 		 *         3 = query couldn't be answered.
 		 *         if it is indeed 0, then its bindingSet field contains the question to be answered by userID, 
 		 *         in BindingSet format, otherwise contains null*/
-		System.out.println("wrapper get question");
-		TupleQueryResult queryResult;
-		NaiveAlgorithm algo;
-		if (algoDic.containsKey(query)){
-			algo = algoDic.get(query);
-		}else{
-			try {
-				queryResult = SPARQLQueryManager.evaluateQuery(query);
-			} catch (RepositoryException e) {
-				return new Result(1, null);
-			} catch (MalformedQueryException e) {
-				return new Result(2, null);
-			} catch (QueryEvaluationException e) {
-				return new Result(3, null);
-			}
-			algo = new NaiveAlgorithm(queryResult);
-			algoDic.put(query, algo);
-		}
-		System.out.println("wrapper get question done");
-		return new Result(1, algo.next(userID));		
+		
+		
+		/*System.out.println("Wrapper.getQuestion starting..");*/
+		TraversalModule algo = algoDic.get(query);
+		/*System.out.println("Wrapper.getQuestion done");*/
+		return new Result(0, algo.next(userID));		
 	}
 	
 	
@@ -81,17 +99,17 @@ public class Wrapper {
 		/*input: bindingSet is the question that the user answered, queryID and userID same as the next function. support is the answer given byuserID.
 		 * output: result.validAnswer = 0: success
 		 * 		   result.validAnswer = 1: bindingSet or query were null.*/
-		System.out.println("wrapper answer question");
+		
+		
+		/*System.out.println("Wrapper.answerQuestion starting..");*/
 		Result result = new Result();
 		if (bindingSet == null || query == null ){
 			result.validAnswer = 1;
 			return result;
 		}
-		NaiveAlgorithm algo = algoDic.get(query);
+		TraversalModule algo = algoDic.get(query);
 		algo.update(bindingSet, userID, support);
-		System.out.println("wrapper answer question done");
+		/*System.out.println("Wrapper.answerQuestion done");*/
 		return result;
 	}
-	
-	
 }
