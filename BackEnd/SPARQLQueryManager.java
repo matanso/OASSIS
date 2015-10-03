@@ -23,7 +23,6 @@ public class SPARQLQueryManager {
 	
 	private static Repository rep; /*same repository for every instance of query*/
 	private static String baseURI = "http://example.org/";
-	private static String dbPath;
 	public SPARQLQueryManager() throws RepositoryException{
 		
 	}
@@ -41,7 +40,6 @@ public class SPARQLQueryManager {
 		
 		
 		int res = 0;
-		System.out.println("loading ontology..");
 		RepositoryConnection conn = null;
 		try {
 			conn = (rep).getConnection();
@@ -88,9 +86,10 @@ public class SPARQLQueryManager {
 	}
 	
 	
-	public static int init(String ontology, String DBPath){
+	public static int init(String ontology){
 		/*input: receives only one ontology which every query works with.
-		 * output: 0 = success
+		 * output: starts up the repository, and loads ontology into it. 
+		 * 		   0 = success
 		   		   1 = Repository Exception - if something went wrong with connecting to rep (such as rep doesn't exist)
 		   		   2 = if an error was found parsing the ontology (i.e wrong format)
 		   		   3 = if data couldn't be written into rep (i.e rep not writable, data stream failed to write).
@@ -99,7 +98,6 @@ public class SPARQLQueryManager {
 		
 		int res = 0;
 		File ontologyFile = null;
-		dbPath = DBPath;
 		try {
 			rep = new SailRepository(new MemoryStore());
 			rep.initialize();
@@ -113,11 +111,6 @@ public class SPARQLQueryManager {
 	}
 	
 
-	
-	
-	public static String getDbPath(){
-		return dbPath;
-	}
 	
 	public static void printTupleQueryResult(TupleQueryResult result) throws QueryEvaluationException {
 		while (result.hasNext()) { /*
