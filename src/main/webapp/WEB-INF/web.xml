@@ -14,8 +14,12 @@
     <filter-mapping>
         <filter-name>staticFilter</filter-name>
         <url-pattern>/*</url-pattern>
-        <url-pattern>*.html</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
+
+    <welcome-file-list>
+        <welcome-file>/pages/index.html</welcome-file>
+    </welcome-file-list>
 
     <servlet>
         <servlet-name>login</servlet-name>
