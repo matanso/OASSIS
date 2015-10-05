@@ -32,7 +32,7 @@ public class Wrapper {
 	
 	
 	
-	/*private static Map<String, TraversalModule> algoDic = 
+	private static Map<String, TraversalModule> algoDic = 
 							new HashMap<String, TraversalModule>();/*query string is key, the algo that goes with it is value
 																	* private static Map<Integer, String> queryStringDic = 
 	  																* new HashMap<Integer, String>()*/
@@ -51,7 +51,14 @@ public class Wrapper {
 		/*System.out.println("Wrapper.init starting..");*/
 		res =  SPARQLQueryManager.init(rdfDBPath);
 		NaiveAlgorithm.setGraphDB(neo4jDBPath);
-		Transaction tx = NaiveAlgorithm.graphDB.beginTx();
+		
+		
+		
+		
+		
+		
+		/*TODO: also part of my implementation of using neo4j to save algoDIc*/
+		/*Transaction tx = NaiveAlgorithm.graphDB.beginTx();
 		try{
 			Map<String, TraversalModule> tempAlgoDic = 	new HashMap<String, TraversalModule>();
 			String tempString = mySerialize(tempAlgoDic);
@@ -62,7 +69,10 @@ public class Wrapper {
 			tx.success();
 		}finally{
 			tx.finish();
-		}
+		}*/
+		
+		
+		
 		
 		/*System.out.println("Wrapper.init done.");*/
 		return res;
@@ -177,6 +187,20 @@ public class Wrapper {
 	}
 	
 	
+	private static Map<String, TraversalModule> getAlgoDic(){
+		return algoDic;
+	}
+	
+	private static void setAlgoDic(Map<String, TraversalModule> tempAlgoDic){
+		algoDic = tempAlgoDic;
+	}
+	
+	
+	
+	
+	/*TODO: here's my implmentation using the neo4j server for saving algoDic.*/
+	
+	/*
 	@SuppressWarnings("deprecation")
 	private static Map<String, TraversalModule> getAlgoDic(){
 		Transaction tx = NaiveAlgorithm.graphDB.beginTx();
@@ -206,13 +230,14 @@ public class Wrapper {
 			tx.finish();
 		}
 	}
+	*/
 	
-	private static String mySerialize(Map<String, TraversalModule> algoDic){
+	/*private static String mySerialize(Map<String, TraversalModule> algoDic){
 		
 	}
 	
 	private static Map<String, TraversalModule> myDeserialize(String algoDicString){
 		
-	}
+	}*/
 		
 }
