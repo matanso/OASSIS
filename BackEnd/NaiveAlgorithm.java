@@ -16,6 +16,12 @@ import org.openrdf.query.TupleQueryResult;
 
 
 
+
+
+
+
+
+
 import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
 
@@ -30,8 +36,8 @@ public class NaiveAlgorithm extends TraversalModule {
 	
 
 	// +++++++++++++Fields Here+++++++++
-	private String DB_PATH;/*where the graphDb goes.*/
-	private GraphDatabaseService graphDB;
+	private static String DB_PATH;/*where the graphDb goes.*/
+	public static GraphDatabaseService graphDB;
 	
 	private List<BindingSet> undecidedKeys; /* a list of all undecided assignments to the query.*/
 	private List<BindingSet> MSP; /*a list to keep all MSP's*/
@@ -47,13 +53,12 @@ public class NaiveAlgorithm extends TraversalModule {
 	private JSONSerializer serializer = new JSONSerializer();
 	
 	
-	public NaiveAlgorithm(TupleQueryResult validAssignments, String DBPath) {
+	@SuppressWarnings("deprecation")
+	public NaiveAlgorithm(TupleQueryResult validAssignments) {
 		/*first off we start a graphDB. then we go over all valid assignments and add them all to undecided keys.
 		 * We have nodeDic to keep track of all entered nodes, one for each assignment which we also do in the 
 		 * while loop (enter a node with it's relevant matadata using json and Gson, for each assignment) */
 		super(validAssignments);
-		this.DB_PATH = DBPath;
-		this.graphDB = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
 		this.nodeDic = new HashMap<BindingSet, Node>();
 		this.MSP = new ArrayList<BindingSet>();
 		this.undecidedKeys = new ArrayList<BindingSet>();
@@ -64,7 +69,7 @@ public class NaiveAlgorithm extends TraversalModule {
 		try{
 			while(validAssignments.hasNext()){ 
 				tempBindingSet = validAssignments.next();
-				node = this.graphDB.createNode();
+				node = graphDB.createNode();
 				setBindingSet(node, tempBindingSet);
 				setSupportDic(node, new HashMap<String,Integer>());
 				setSignificanceBit(node, 0);
@@ -81,6 +86,7 @@ public class NaiveAlgorithm extends TraversalModule {
 
 	
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public BindingSet next(int userID) {
 		/*TODO: maybe make the node making lazy, that is only make the node when the assignment is first asked.
@@ -129,6 +135,7 @@ public class NaiveAlgorithm extends TraversalModule {
 
 	
 	
+	@SuppressWarnings("deprecation")
 	public void update(BindingSet assignment, int userID, int support) {
 		/* input: assignment and userID and his support for said assignment.
 		   assumes assignment hasnt been answered by user yet.
@@ -212,6 +219,7 @@ public class NaiveAlgorithm extends TraversalModule {
         return temp;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void setSignificanceBit(Node node, int significanceBit){
 		String tempString = serializer.serialize(significanceBit);
 		Transaction tx = graphDB.beginTx();
@@ -223,6 +231,7 @@ public class NaiveAlgorithm extends TraversalModule {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	public void setSupportDic(Node node, Map<String,Integer> supportDic){
 		String tempString = serializer.deepSerialize(supportDic);
 		Transaction tx = graphDB.beginTx();
@@ -234,7 +243,8 @@ public class NaiveAlgorithm extends TraversalModule {
 		}
 	}
 	
-public void setBindingSet(Node node, BindingSet bindingSet){
+	@SuppressWarnings("deprecation")
+	public void setBindingSet(Node node, BindingSet bindingSet){
 		String tempString = serializer.serialize(bindingSet);
 		Transaction tx = graphDB.beginTx();
 		try{
@@ -245,5 +255,16 @@ public void setBindingSet(Node node, BindingSet bindingSet){
 		}
 	}
 	
+	public static void setDBPath(String DBPath){
+		DB_PATH = DBPath;
+	}
+	
+	public static void setGraphDB(String DBPath){
+		setDBPath(DBPath);
+		graphDB = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
+	}
+	public static GraphDatabaseService getGraphDB(){
+		return graphDB;
+	}
 	
 }
