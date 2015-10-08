@@ -23,7 +23,7 @@ public class login extends HttpServlet
         HttpSession session = request.getSession();
         JSONObject result = new JSONObject();
 
-        if(LoginVerify.validateLogin(request))
+        if(LoginVerify.validateLogin(request) > 0)
         {
             session.setAttribute("loggedIn", true);
             session.setAttribute("userId", 1);

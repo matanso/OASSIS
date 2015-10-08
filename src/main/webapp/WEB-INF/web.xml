@@ -5,6 +5,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          metadata-complete="false">
+    <welcome-file-list>
+        <welcome-file>/pages/index.html</welcome-file>
+    </welcome-file-list>
 
     <filter>
         <filter-name>staticFilter</filter-name>
@@ -15,12 +18,9 @@
         <filter-name>staticFilter</filter-name>
         <url-pattern>/*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
-        <dispatcher>ERROR</dispatcher>
     </filter-mapping>
 
-    <welcome-file-list>
-        <welcome-file>/pages/index.html</welcome-file>
-    </welcome-file-list>
+
 
     <servlet>
         <servlet-name>login</servlet-name>
@@ -66,7 +66,6 @@
         <servlet-name>userInfo</servlet-name>
         <url-pattern>/app/getUserInfo</url-pattern>
     </servlet-mapping>
-
 
 
 

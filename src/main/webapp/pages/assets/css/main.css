@@ -1465,7 +1465,7 @@
 	form textarea {
 		-webkit-appearance: none;
 		display: block;
-		width: 100%;
+		width: 20%;
 		border-radius: 8px;
 		border: solid 1px #eee;
 	}
