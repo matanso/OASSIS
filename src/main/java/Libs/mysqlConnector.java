@@ -7,6 +7,11 @@ import java.sql.*;
  */
 public class mysqlConnector
 {
+    public static void main(String args[])
+    {
+        for(String query: tables)
+            System.out.println(query);
+    }
     private static String[] tables =
             new String[]{
                     "CREATE TABLE IF NOT EXISTS users(" +
@@ -14,19 +19,38 @@ public class mysqlConnector
                             "name nvarchar(50), " +
                             "email varchar(60), " +
                             "passhash varchar(60)," +
-                            "unique(email))",
+                            "unique(email)," +
+                            "primary key(id))",
 
                     "CREATE TABLE IF NOT EXISTS queries(" +
                             "id int not null auto_increment," +
                             "name nvarchar(60)," +
                             "sparql TEXT CHARACTER SET utf8," +
-                            "userId int not null)",
+                            "userId int not null,"+
+                            "primary key(id))",
 
                     "CREATE TABLE IF NOT EXISTS questions(" +
-                            "id int nut null auto_increment," +
-                            "user_id int not null)"};
+                            "id int not null auto_increment," +
+                            "user_id int not null," +
+                            "primary key(id))"};
     private Connection con;
 
+    public boolean init()
+    {
+        try
+        {
+            Statement statement = con.createStatement();
+            for(String query: tables)
+            {
+                statement.execute(query);
+            }
+            return true;
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }
     public mysqlConnector() throws SQLException
     {
         String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");

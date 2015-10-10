@@ -28,6 +28,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>init</servlet-name>
+        <servlet-class>Servlets.Init</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>logout</servlet-name>
         <servlet-class>Servlets.logout</servlet-class>
     </servlet>
@@ -36,6 +41,12 @@
         <servlet-name>loggedIn</servlet-name>
         <servlet-class>Servlets.loggedInCheck</servlet-class>
     </servlet>
+
+    <servlet>
+        <servlet-name>signup</servlet-name>
+        <servlet-class>Servlets.Signup</servlet-class>
+    </servlet>
+
 
     <servlet>
         <servlet-name>userInfo</servlet-name>
@@ -65,6 +76,16 @@
     <servlet-mapping>
         <servlet-name>userInfo</servlet-name>
         <url-pattern>/app/getUserInfo</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>signup</servlet-name>
+        <url-pattern>/app/signup</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>init</servlet-name>
+        <url-pattern>/app/init</url-pattern>
     </servlet-mapping>
 
 
