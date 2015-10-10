@@ -26,17 +26,21 @@ public class Init extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         boolean success = false;
+        JSONObject result = new JSONObject();
         mysqlConnector connector = null;
         try
         {
             connector = new mysqlConnector();
+            result.put("connected", true);
             connector.init();
             success = true;
         } catch (SQLException e)
         {
             e.printStackTrace();
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
         }
-        JSONObject result = new JSONObject();
         try
         {
             result.put("success", success ? 0 : 1);

@@ -7,11 +7,6 @@ import java.sql.*;
  */
 public class mysqlConnector
 {
-    public static void main(String args[])
-    {
-        for(String query: tables)
-            System.out.println(query);
-    }
     private static String[] tables =
             new String[]{
                     "CREATE TABLE IF NOT EXISTS users(" +
