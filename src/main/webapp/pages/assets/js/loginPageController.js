@@ -13,7 +13,7 @@ app.controller('loginPageController', ['$scope', '$sce', '$http', function ($sco
         $http({url: '/app/login',
         method: "POST",
         headers:  {'Content-Type': 'application/x-www-form-urlencoded'},
-                data: {'loginType': 1, email: $scope.email, password: $scope.password}}
+                data: $.param({'loginType': 1, email: $scope.email, password: $scope.password})}
         ).then(function success(response) {
 
             },
@@ -29,7 +29,7 @@ app.controller('loginPageController', ['$scope', '$sce', '$http', function ($sco
         $http({url: '/app/signup',
                 method: "POST",
                 headers:  {'Content-Type': 'application/x-www-form-urlencoded'},
-                data: {'loginType': 1, name: $scope.name, email: $scope.email, password: $scope.password}}
+                data: $.param({'loginType': 1, name: $scope.name, email: $scope.email, password: $scope.password})}
         ).then(function success(response) {
                 if(response.success == 0)
                 {
