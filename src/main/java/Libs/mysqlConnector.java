@@ -48,6 +48,13 @@ public class mysqlConnector
     }
     public mysqlConnector() throws SQLException
     {
+        try
+        {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
         String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
         String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
         String name = "test";
