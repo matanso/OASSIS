@@ -1,6 +1,5 @@
 package Servlets;
 
-import Libs.LoginVerify;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,40 +14,15 @@ import java.io.IOException;
 /**
  * Created by matan on 01/10/15.
  */
-@WebServlet(name = "login")
-public class login extends HttpServlet
+@WebServlet(name = "submitQuery")
+public class submitQuery extends HttpServlet
 {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession session = request.getSession();
         JSONObject result = new JSONObject();
-        if((Boolean) session.getAttribute("loggedIn"))
+        if(!(session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")))  // Check if user is logged in
         {
-            try
-            {
-                result.put("success", 0);
-            } catch (JSONException e)
-            {
-                e.printStackTrace();
-            }
-            response.getWriter().print(result.toString());
-        }
-
-        int id = LoginVerify.validateLogin(request);
-        if(id > 0)
-        {
-            session.setAttribute("loggedIn", true);
-            session.setAttribute("userId", id);
-            try
-            {
-                result.put("success", 0);
-                result.put("userId", id);
-            } catch (JSONException e)
-            {
-                e.printStackTrace();
-            }
-        }
-        else{
             try
             {
                 result.put("success", 2);
@@ -56,7 +30,9 @@ public class login extends HttpServlet
             {
                 e.printStackTrace();
             }
+            response.getWriter().print(result.toString());
         }
+
         response.getWriter().print(result.toString());
     }
 

@@ -16,24 +16,12 @@ import java.io.IOException;
  * Created by matan on 01/10/15.
  */
 @WebServlet(name = "login")
-public class login extends HttpServlet
+public class answerQuestion extends HttpServlet
 {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession session = request.getSession();
         JSONObject result = new JSONObject();
-        if((Boolean) session.getAttribute("loggedIn"))
-        {
-            try
-            {
-                result.put("success", 0);
-            } catch (JSONException e)
-            {
-                e.printStackTrace();
-            }
-            response.getWriter().print(result.toString());
-        }
-
         int id = LoginVerify.validateLogin(request);
         if(id > 0)
         {

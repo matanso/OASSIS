@@ -27,7 +27,7 @@ public class mysqlConnector
                             "user_id int not null)"};
     private Connection con;
 
-    protected mysqlConnector() throws SQLException
+    public mysqlConnector() throws SQLException
     {
         String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
         String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
@@ -76,5 +76,8 @@ public class mysqlConnector
             e.printStackTrace();
         }
         return false;
+    }
+    public boolean submitQuery(String name, int user_id, String sparql){
+        return true;
     }
 }
