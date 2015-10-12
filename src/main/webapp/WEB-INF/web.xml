@@ -10,23 +10,23 @@
     </welcome-file-list>
 
     <filter>
-        <filter-name>authFilter</filter-name>
-        <filter-class>Filters.UserAuth</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>authFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
-
-    <filter>
         <filter-name>staticFilter</filter-name>
         <filter-class>Filters.StaticFilter</filter-class>
     </filter>
 
     <filter-mapping>
         <filter-name>staticFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>authFilter</filter-name>
+        <filter-class>Filters.UserAuth</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>authFilter</filter-name>
         <url-pattern>/*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
