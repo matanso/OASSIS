@@ -61,42 +61,51 @@
         <servlet-class>Servlets.queries</servlet-class>
     </servlet> <!-- get queries -->
 
+    <servlet>
+        <servlet-name>getQuery</servlet-name>
+        <servlet-class>Servlets.Query</servlet-class>
+    </servlet> <!-- get query -->
+
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>/pages/*</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping> <!-- default /* -->
     <servlet-mapping>
         <servlet-name>submitQuery</servlet-name>
         <url-pattern>/app/submitQuery</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping> <!-- /app/submitQuery -->
     <servlet-mapping>
         <servlet-name>login</servlet-name>
         <url-pattern>/app/login</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping> <!-- /app/login -->
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/app/logout</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping> <!-- /app/logout -->
     <servlet-mapping>
         <servlet-name>loggedIn</servlet-name>
         <url-pattern>/app/loggedIn</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping> <!-- /app/loggedIn -->
     <servlet-mapping>
         <servlet-name>userInfo</servlet-name>
         <url-pattern>/app/getUserInfo</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping> <!-- /app/getUserInfo -->
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/app/signup</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping> <!-- /app/signup -->
     <servlet-mapping>
         <servlet-name>init</servlet-name>
         <url-pattern>/app/init</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping> <!-- /app/init (create tables in DB) -->
     <servlet-mapping>
         <servlet-name>getQueries</servlet-name>
         <url-pattern>/app/getQueries</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping> <!-- /app/getQueries -->
+    <servlet-mapping>
+        <servlet-name>getQuery</servlet-name>
+        <url-pattern>/app/getQuery</url-pattern>
+    </servlet-mapping> <!-- /app/getQuery -->
 
 
 
