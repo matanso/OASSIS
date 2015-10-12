@@ -21,6 +21,7 @@ public class Login extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         System.out.println("Logging in...");
+        System.out.println(System.getProperty("user.dir"));
         HttpSession session = request.getSession();
         JSONObject result = new JSONObject();
         if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn"))
