@@ -35,7 +35,11 @@ public class queries extends HttpServlet
             try
             {
                 mysqlConnector connector = new mysqlConnector();
-                JSONArray queries = new JSONArray(connector.getQueries((Integer) session.getAttribute("userId")));
+                JSONArray queries = new JSONArray();
+                for(structs.Query query: connector.getQueries((Integer) session.getAttribute("user_id")))
+                {
+                    queries.put(query.toJSON());
+                }
                 result.put("queries", queries);
                 result.put("success", success_codes.SUCCESS);
             } catch (SQLException e)
