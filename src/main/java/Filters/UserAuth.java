@@ -21,27 +21,19 @@ public class UserAuth implements Filter
         HttpServletRequest request = (HttpServletRequest) req;
         HttpSession session = request.getSession();
         String path = request.getRequestURI().substring(request.getContextPath().length());
-        try
+        if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn"))
         {
-            if ((Boolean) session.getAttribute("loggedIn") && session.getAttribute("userId") != null)
-            {
-                // Continue
-                chain.doFilter(req, resp);
-            }
-            else if(path.startsWith("/pages/assets/") || path.startsWith("/pages/images/") || path.startsWith("/pages/index.html") || path.startsWith("/pages/index.html"))
-            {
-                chain.doFilter(req, resp);
-            }
-            else
-            {
-                // Redirect to homepage
-                req.getRequestDispatcher("pages/index.html").forward(req, resp);
-            }
-        }
-        catch (NullPointerException e)
+            // Continue
+            chain.doFilter(req, resp);
+        } else if (path.startsWith("/pages/assets/") || path.startsWith("/pages/images/") || path.startsWith("/pages/index.html") || path.startsWith("/pages/login.html"))
         {
             chain.doFilter(req, resp);
+        } else
+        {
+            // Redirect to homepage
+            req.getRequestDispatcher("pages/index.html").forward(req, resp);
         }
+
     }
 
     public void init(FilterConfig config) throws ServletException

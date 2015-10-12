@@ -23,9 +23,11 @@ public class StaticFilter implements Filter
         String path = request.getRequestURI().substring(request.getContextPath().length());
         Logger logger = Logger.getLogger("Hello");
         logger.log(Level.ALL, "Entered filter, Path:" + path);
-        if (path.startsWith("/app")) {
+        if (path.startsWith("/app"))
+        {
             chain.doFilter(req, resp); // Goes to default servlet.
-        } else {
+        } else
+        {
             request.getRequestDispatcher("/pages" + path).forward(req, resp);
         }
     }

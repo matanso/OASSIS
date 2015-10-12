@@ -17,6 +17,7 @@
     <filter-mapping>
         <filter-name>authFilter</filter-name>
         <url-pattern>/*</url-pattern>
+        <servlet-name>default</servlet-name>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 
