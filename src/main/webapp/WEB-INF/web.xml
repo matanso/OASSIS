@@ -56,11 +56,15 @@
         <servlet-class>Servlets.userInfo</servlet-class>
     </servlet> <!-- user info -->
 
+    <servlet>
+        <servlet-name>getQueries</servlet-name>
+        <servlet-class>Servlets.queries</servlet-class>
+    </servlet> <!-- get queries -->
+
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>/pages/*</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>submitQuery</servlet-name>
         <url-pattern>/app/submitQuery</url-pattern>
@@ -69,30 +73,29 @@
         <servlet-name>login</servlet-name>
         <url-pattern>/app/login</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/app/logout</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>loggedIn</servlet-name>
         <url-pattern>/app/loggedIn</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>userInfo</servlet-name>
         <url-pattern>/app/getUserInfo</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/app/signup</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>init</servlet-name>
         <url-pattern>/app/init</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getQueries</servlet-name>
+        <url-pattern>/app/getQueries</url-pattern>
     </servlet-mapping>
 
 
