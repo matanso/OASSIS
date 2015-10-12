@@ -59,7 +59,7 @@
                         <br/>
                         <ul>
                             <p ng-repeat-start="query in queries">
-                            <li><a ng-href="{{'viewQuery.html?queryId=' + query.id}}"><h3>{{query.name}}</h3></a></li>
+                            <li><a ng-click="view_query(query.id)"><h3>{{query.name}}</h3></a></li>
                             <progress ng-repeat-end value="{{query.progress}}"></progress>
                             </p>
                         </ul>
