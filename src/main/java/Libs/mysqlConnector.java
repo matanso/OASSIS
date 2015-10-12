@@ -173,7 +173,7 @@ public class mysqlConnector
             {
                 result.add(new Query(
                         resultSet.getString("name"),
-                        resultSet.getString("query"),
+                        resultSet.getString("sparql"),
                         0, // TODO progress
                         resultSet.getInt("id"),
                         0,
