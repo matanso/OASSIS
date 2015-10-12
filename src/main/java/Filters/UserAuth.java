@@ -26,13 +26,13 @@ public class UserAuth implements Filter
             System.out.println("Authorized");
             // Continue
             chain.doFilter(req, resp);
-        } else if (path.startsWith("/pages/assets/") || path.startsWith("/pages/images/") || path.startsWith("/pages/index.html") || path.startsWith("/pages/login.html"))
+        } else if (path.startsWith("/pages/assets/") || path.startsWith("/pages/images/") || path.startsWith("/pages/index.html") || path.startsWith("/pages/login.html") || path.startsWith("/app/login"))
         {
             System.out.println("Public");
             chain.doFilter(req, resp);
         } else
         {
-            System.out.println("Unauthorized, redirecting.");
+            System.out.println("Unauthorized, redirecting..." + path);
             // Redirect to homepage
             req.getRequestDispatcher("pages/index.html").forward(req, resp);
         }
