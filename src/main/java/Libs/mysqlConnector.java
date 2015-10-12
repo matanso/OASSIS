@@ -166,7 +166,7 @@ public class mysqlConnector
         List<Query> result = new ArrayList<Query>();
         try
         {
-            PreparedStatement statement = con.prepareStatement("SELECT * FROM queries WHERE user_id=?");
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM queries WHERE userId=?");
             statement.setInt(1, user_id);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next())
