@@ -142,7 +142,7 @@ public class mysqlConnector
             query.setName(resultSet.getString("name"));
             query.setQuery(resultSet.getString("sparql"));
 
-            statement = con.prepareStatement("SELECT user_id from questions WHERE query_id=? AND SOLVED=TRUE");
+            statement = con.prepareStatement("SELECT user_id from questions WHERE query_id=? AND answered=TRUE");
             statement.setInt(1, id);
             resultSet = statement.executeQuery();
             int answers = 0;
