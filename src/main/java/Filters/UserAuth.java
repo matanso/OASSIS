@@ -21,15 +21,19 @@ public class UserAuth implements Filter
         HttpServletRequest request = (HttpServletRequest) req;
         HttpSession session = request.getSession();
         String path = request.getRequestURI().substring(request.getContextPath().length());
+        System.out.println("Entered auth, path: " + path);
         if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn"))
         {
+            System.out.println("Authorized");
             // Continue
             chain.doFilter(req, resp);
         } else if (path.startsWith("/pages/assets/") || path.startsWith("/pages/images/") || path.startsWith("/pages/index.html") || path.startsWith("/pages/login.html") || path.startsWith("/app/login"))
         {
+            System.out.println("Public");
             chain.doFilter(req, resp);
         } else
         {
+            System.out.println("REDIRECTED");
             // Redirect to homepage
             req.getRequestDispatcher("/pages/index.html").forward(req, resp);
         }
