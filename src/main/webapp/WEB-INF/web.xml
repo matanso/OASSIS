@@ -16,7 +16,7 @@
 
     <filter-mapping>
         <filter-name>staticFilter</filter-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 
