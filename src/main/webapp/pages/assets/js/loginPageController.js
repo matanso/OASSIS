@@ -17,7 +17,7 @@ app.controller('loginPageController', ['$scope', '$sce', '$http', function ($sco
                 data: $.param({'loginType': 1, email: $scope.email, password: $scope.password})
             }
         ).then(function success(response) {
-            console.log("success");
+            window.location.href = 'index.html'
             },
             function error(response) {
                 console.log("error");
@@ -37,7 +37,7 @@ app.controller('loginPageController', ['$scope', '$sce', '$http', function ($sco
             }
         ).then(function success(response) {
                 if (response.success == 0) {
-                    // TODO
+                    login();
                 }
                 else {
                     $scope.error = response.error || "An error occurred.";

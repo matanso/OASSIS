@@ -29,7 +29,7 @@ public class Signup extends HttpServlet
         {
             mysqlConnector connector = new mysqlConnector();
             boolean success = connector.signup(email, Crypto.md5Hash(email + password), name);
-            if(success)
+            if (success)
                 result.put("success", 0);
             else
                 result.put("success", 2);

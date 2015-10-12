@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Enumeration;
 
 /**
  * Created by matan on 01/10/15.
@@ -24,26 +23,22 @@ public class login extends HttpServlet
         System.out.println("Logging in...");
         HttpSession session = request.getSession();
         JSONObject result = new JSONObject();
-        Enumeration<String> en = session.getAttributeNames();
-        while(en.hasMoreElements())
+        if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn"))
         {
-            String key = en.nextElement();
-            if(key.equals("loggedIn") && (Boolean) session.getAttribute("loggedIn"))
+            try
             {
-                try
-                {
-                    result.put("success", 0);
-                } catch (JSONException e)
-                {
-                    e.printStackTrace();
-                }
-                response.getWriter().print(result.toString());
-                return;
+                result.put("success", 0);
+            } catch (JSONException e)
+            {
+                e.printStackTrace();
             }
+            response.getWriter().print(result.toString());
+            return;
         }
 
+
         int id = LoginVerify.validateLogin(request);
-        if(id > 0)
+        if (id > 0)
         {
             session.setAttribute("loggedIn", true);
             session.setAttribute("userId", id);
@@ -55,8 +50,8 @@ public class login extends HttpServlet
             {
                 e.printStackTrace();
             }
-        }
-        else{
+        } else
+        {
             try
             {
                 result.put("success", 2);

@@ -30,9 +30,9 @@ public class Query extends HttpServlet
         HttpSession session = request.getSession();
         JSONObject result = new JSONObject();
         int success_code;
-        if(session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn"))
+        if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn"))
         {
-            if(request.getParameter("queryId") != null)
+            if (request.getParameter("queryId") != null)
             {
                 try
                 {
@@ -44,13 +44,11 @@ public class Query extends HttpServlet
                     success_code = success_codes.SERVER_ERROR;
                     e.printStackTrace();
                 }
-            }
-            else
+            } else
             {
                 success_code = success_codes.INVALID_INPUT;
             }
-        }
-        else
+        } else
         {
             success_code = success_codes.CREDENTIAL_ERROR;
         }

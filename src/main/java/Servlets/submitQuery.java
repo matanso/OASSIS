@@ -24,7 +24,7 @@ public class submitQuery extends HttpServlet
     {
         HttpSession session = request.getSession();
         JSONObject result = new JSONObject();
-        if(!(session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")))  // Check if user is logged in
+        if (!(session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")))  // Check if user is logged in
         {
             try
             {

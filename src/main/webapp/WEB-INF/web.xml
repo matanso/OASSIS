@@ -25,42 +25,34 @@
         <servlet-name>submitQuery</servlet-name>
         <servlet-class>Servlets.submitQuery</servlet-class>
     </servlet> <!-- submit query -->
-
     <servlet>
         <servlet-name>login</servlet-name>
         <servlet-class>Servlets.login</servlet-class>
     </servlet> <!-- login -->
-
     <servlet>
         <servlet-name>init</servlet-name>
         <servlet-class>Servlets.Init</servlet-class>
     </servlet> <!-- init tables -->
-
     <servlet>
         <servlet-name>logout</servlet-name>
         <servlet-class>Servlets.logout</servlet-class>
     </servlet> <!-- logout -->
-
     <servlet>
         <servlet-name>loggedIn</servlet-name>
         <servlet-class>Servlets.loggedInCheck</servlet-class>
     </servlet> <!-- logged in -->
-
     <servlet>
         <servlet-name>signup</servlet-name>
         <servlet-class>Servlets.Signup</servlet-class>
     </servlet> <!-- signup -->
-
     <servlet>
         <servlet-name>userInfo</servlet-name>
         <servlet-class>Servlets.userInfo</servlet-class>
     </servlet> <!-- user info -->
-
     <servlet>
         <servlet-name>getQueries</servlet-name>
         <servlet-class>Servlets.queries</servlet-class>
     </servlet> <!-- get queries -->
-
     <servlet>
         <servlet-name>getQuery</servlet-name>
         <servlet-class>Servlets.Query</servlet-class>

@@ -25,11 +25,12 @@ public class queries extends HttpServlet
     {
 
     }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession session = request.getSession();
         JSONObject result = new JSONObject();
-        if(session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn"))
+        if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn"))
         {
             try
             {
@@ -44,8 +45,8 @@ public class queries extends HttpServlet
             {
                 e.printStackTrace();
             }
-        }
-        else{
+        } else
+        {
             try
             {
                 result.put("success", success_codes.CREDENTIAL_ERROR);

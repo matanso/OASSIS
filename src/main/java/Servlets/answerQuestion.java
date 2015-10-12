@@ -23,7 +23,7 @@ public class answerQuestion extends HttpServlet
         HttpSession session = request.getSession();
         JSONObject result = new JSONObject();
         int id = LoginVerify.validateLogin(request);
-        if(id > 0)
+        if (id > 0)
         {
             session.setAttribute("loggedIn", true);
             session.setAttribute("userId", id);
@@ -35,8 +35,8 @@ public class answerQuestion extends HttpServlet
             {
                 e.printStackTrace();
             }
-        }
-        else{
+        } else
+        {
             try
             {
                 result.put("success", 2);

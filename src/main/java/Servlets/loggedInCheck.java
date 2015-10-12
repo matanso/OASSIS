@@ -34,7 +34,7 @@ public class loggedInCheck extends HttpServlet
             e.printStackTrace();
         }
 
-        if(session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn"))
+        if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn"))
         {
             try
             {
@@ -44,8 +44,7 @@ public class loggedInCheck extends HttpServlet
             {
                 e.printStackTrace();
             }
-        }
-        else
+        } else
         {
             try
             {
