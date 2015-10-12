@@ -51,5 +51,5 @@ app.controller('loginPageController', ['$scope', '$sce', '$http', function ($sco
     $scope.suggest = ["new user?", "login"];
     $scope.funcs = [login, register];
     $scope.texts = ["Login", "Sign up"];
-    $scope.error = "Password is incorrect";
+    $scope.error = "";
 }]);

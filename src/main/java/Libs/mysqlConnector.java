@@ -104,6 +104,18 @@ public class mysqlConnector
         return false;
     }
     public boolean submitQuery(String name, int user_id, String sparql){
+        try
+        {
+            PreparedStatement statement = con.prepareStatement("INSERT INTO queries (name, userId, sparql) VALUES (?, ?, ?)");
+            statement.setString(1, name);
+            statement.setInt(2, user_id);
+            statement.setString(3, sparql);
+            statement.execute();
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
         return true;
     }
 }

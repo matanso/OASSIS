@@ -21,7 +21,7 @@ public class login extends HttpServlet
 {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        System.out.print("Logging in...");
+        System.out.println("Logging in...");
         HttpSession session = request.getSession();
         JSONObject result = new JSONObject();
         Enumeration<String> en = session.getAttributeNames();
