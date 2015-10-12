@@ -75,9 +75,17 @@
         <servlet-name>getQuery</servlet-name>
         <servlet-class>Servlets.Query</servlet-class>
     </servlet> <!-- get query -->
+    <servlet>
+        <servlet-name>FileServlet</servlet-name>
+        <servlet-class>Servlets.FileServlet</servlet-class>
+        <init-param>
+            <param-name>basePath</param-name>
+            <param-value>/var/lib/openshift/560cf2430c1e66dc8d00001e/app-deployments/current/repo/src/main/webapp/pages/</param-value>
+        </init-param>
+    </servlet> <!-- File servlet (!! Openshift only !! TODO -->
 
     <servlet-mapping>
-        <servlet-name>default</servlet-name>
+        <servlet-name>FileServlet</servlet-name>
         <url-pattern>/pages/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
