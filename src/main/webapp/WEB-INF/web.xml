@@ -74,9 +74,13 @@
         <servlet-name>getQuery</servlet-name>
         <servlet-class>Servlets.Query</servlet-class>
     </servlet> <!-- get query -->
+    <servlet>
+        <servlet-name>Test</servlet-name>
+        <servlet-class>Servlets.TestServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
-        <servlet-name>default</servlet-name>
+        <servlet-name>Test</servlet-name>
         <url-pattern>/pages/*</url-pattern>
     </servlet-mapping> <!-- default /* -->
     <servlet-mapping>
