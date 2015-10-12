@@ -1,7 +1,6 @@
 package Servlets;
 
-import Libs.mysqlConnector;
-import Libs.success_codes;
+import Libs.LoginVerify;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,19 +11,46 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 
 /**
  * Created by matan on 01/10/15.
  */
-@WebServlet(name = "submitQuery")
-public class submitQuery extends HttpServlet
+@WebServlet(name = "login")
+public class Login extends HttpServlet
 {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        System.out.println("Logging in...");
         HttpSession session = request.getSession();
         JSONObject result = new JSONObject();
-        if (!(session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")))  // Check if user is logged in
+        if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn"))
+        {
+            try
+            {
+                result.put("success", 0);
+            } catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
+            response.getWriter().print(result.toString());
+            return;
+        }
+
+
+        int id = LoginVerify.validateLogin(request);
+        if (id > 0)
+        {
+            session.setAttribute("loggedIn", true);
+            session.setAttribute("userId", id);
+            try
+            {
+                result.put("success", 0);
+                result.put("userId", id);
+            } catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
+        } else
         {
             try
             {
@@ -33,24 +59,6 @@ public class submitQuery extends HttpServlet
             {
                 e.printStackTrace();
             }
-            response.getWriter().print(result.toString());
-            return;
-        }
-        boolean success = false;
-        try
-        {
-            mysqlConnector connector = new mysqlConnector();
-            success = connector.submitQuery(request.getParameter("name"), (Integer) session.getAttribute("userId"), request.getParameter("sparql"));
-        } catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-        try
-        {
-            result.put("success", success ? success_codes.SUCCESS : success_codes.SERVER_ERROR);
-        } catch (JSONException e)
-        {
-            e.printStackTrace();
         }
         response.getWriter().print(result.toString());
     }

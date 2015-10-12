@@ -1,4 +1,4 @@
-package structs;
+package Structs;
 
 import org.json.JSONException;
 import org.json.JSONObject;

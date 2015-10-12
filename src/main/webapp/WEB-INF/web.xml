@@ -26,7 +26,7 @@
     <dispatcher>REQUEST</dispatcher>
 </filter-mapping>
 
-    <filter>
+<!--    <filter>
         <filter-name>authFilter</filter-name>
         <filter-class>Filters.UserAuth</filter-class>
     </filter>
@@ -36,15 +36,15 @@
         <url-pattern>/</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
-
+-->
 
     <servlet>
         <servlet-name>submitQuery</servlet-name>
-        <servlet-class>Servlets.submitQuery</servlet-class>
+        <servlet-class>Servlets.SubmitQuery</servlet-class>
     </servlet> <!-- submit query -->
     <servlet>
         <servlet-name>login</servlet-name>
-        <servlet-class>Servlets.login</servlet-class>
+        <servlet-class>Servlets.Login</servlet-class>
     </servlet> <!-- login -->
     <servlet>
         <servlet-name>init</servlet-name>
@@ -52,11 +52,11 @@
     </servlet> <!-- init tables -->
     <servlet>
         <servlet-name>logout</servlet-name>
-        <servlet-class>Servlets.logout</servlet-class>
+        <servlet-class>Servlets.Logout</servlet-class>
     </servlet> <!-- logout -->
     <servlet>
         <servlet-name>loggedIn</servlet-name>
-        <servlet-class>Servlets.loggedInCheck</servlet-class>
+        <servlet-class>Servlets.LoggedInCheck</servlet-class>
     </servlet> <!-- logged in -->
     <servlet>
         <servlet-name>signup</servlet-name>
@@ -64,11 +64,11 @@
     </servlet> <!-- signup -->
     <servlet>
         <servlet-name>userInfo</servlet-name>
-        <servlet-class>Servlets.userInfo</servlet-class>
+        <servlet-class>Servlets.UserInfo</servlet-class>
     </servlet> <!-- user info -->
     <servlet>
         <servlet-name>getQueries</servlet-name>
-        <servlet-class>Servlets.queries</servlet-class>
+        <servlet-class>Servlets.Queries</servlet-class>
     </servlet> <!-- get queries -->
     <servlet>
         <servlet-name>getQuery</servlet-name>

@@ -1,6 +1,6 @@
 package Libs;
 
-import structs.Query;
+import Structs.Query;
 
 import java.sql.*;
 import java.util.ArrayList;

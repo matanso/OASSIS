@@ -15,7 +15,7 @@ import java.io.IOException;
  * Created by matan on 01/10/15.
  */
 @WebServlet(name = "loggedInCheck")
-public class loggedInCheck extends HttpServlet
+public class LoggedInCheck extends HttpServlet
 {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

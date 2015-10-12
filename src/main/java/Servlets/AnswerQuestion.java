@@ -1,8 +1,6 @@
 package Servlets;
 
-import Libs.mysqlConnector;
-import Libs.success_codes;
-import org.json.JSONArray;
+import Libs.LoginVerify;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,38 +11,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 
 /**
  * Created by matan on 01/10/15.
  */
-@WebServlet(name = "queries")
-public class queries extends HttpServlet
+@WebServlet(name = "login")
+public class AnswerQuestion extends HttpServlet
 {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
         HttpSession session = request.getSession();
         JSONObject result = new JSONObject();
-        if (session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn"))
+        int id = LoginVerify.validateLogin(request);
+        if (id > 0)
         {
+            session.setAttribute("loggedIn", true);
+            session.setAttribute("userId", id);
             try
             {
-                mysqlConnector connector = new mysqlConnector();
-                JSONArray queries = new JSONArray();
-                for(structs.Query query: connector.getQueries((Integer) session.getAttribute("userId")))
-                {
-                    queries.put(query.toJSON());
-                }
-                result.put("queries", queries);
-                result.put("success", success_codes.SUCCESS);
-            } catch (SQLException e)
-            {
-                e.printStackTrace();
+                result.put("success", 0);
+                result.put("userId", id);
             } catch (JSONException e)
             {
                 e.printStackTrace();
@@ -53,12 +39,17 @@ public class queries extends HttpServlet
         {
             try
             {
-                result.put("success", success_codes.CREDENTIAL_ERROR);
+                result.put("success", 2);
             } catch (JSONException e)
             {
                 e.printStackTrace();
             }
         }
         response.getWriter().print(result.toString());
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+
     }
 }
