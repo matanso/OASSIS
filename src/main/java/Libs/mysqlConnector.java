@@ -179,6 +179,7 @@ public class mysqlConnector
                         0,
                         0
                 ));
+                System.out.println(resultSet.getString("name"));
             }
         } catch (SQLException e)
         {
