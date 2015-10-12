@@ -34,7 +34,7 @@ public class UserAuth implements Filter
         {
             System.out.println("Unauthorized, redirecting..." + path);
             // Redirect to homepage
-            req.getRequestDispatcher("pages/index.html").forward(req, resp);
+            req.getRequestDispatcher("/pages/index.html").forward(req, resp);
         }
 
     }
