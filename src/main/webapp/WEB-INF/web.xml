@@ -9,7 +9,7 @@
         <welcome-file>pages/index.html</welcome-file>
     </welcome-file-list> -->
 
-<!--    <filter>
+    <filter>
         <filter-name>staticFilter</filter-name>
         <filter-class>Filters.StaticFilter</filter-class>
     </filter>
@@ -19,13 +19,6 @@
         <url-pattern>/</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
-    <filter-mapping>
-    <filter-name>staticFilter</filter-name>
-    <url-pattern>*.html</url-pattern>
-    <dispatcher>REQUEST</dispatcher>
-</filter-mapping>
-
--->
 
 <!--    <filter>
         <filter-name>authFilter</filter-name>
