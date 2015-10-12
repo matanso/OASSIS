@@ -9,7 +9,7 @@
         <welcome-file>pages/index.html</welcome-file>
     </welcome-file-list> -->
 
-    <filter>
+<!--    <filter>
         <filter-name>staticFilter</filter-name>
         <filter-class>Filters.StaticFilter</filter-class>
     </filter>
@@ -19,12 +19,13 @@
         <url-pattern>/</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
-
     <filter-mapping>
     <filter-name>staticFilter</filter-name>
     <url-pattern>*.html</url-pattern>
     <dispatcher>REQUEST</dispatcher>
 </filter-mapping>
+
+-->
 
 <!--    <filter>
         <filter-name>authFilter</filter-name>
@@ -74,15 +75,11 @@
         <servlet-name>getQuery</servlet-name>
         <servlet-class>Servlets.Query</servlet-class>
     </servlet> <!-- get query -->
-    <servlet>
-        <servlet-name>Test</servlet-name>
-        <servlet-class>Servlets.TestServlet</servlet-class>
-    </servlet>
 
     <servlet-mapping>
-        <servlet-name>Test</servlet-name>
+        <servlet-name>default</servlet-name>
         <url-pattern>/pages/*</url-pattern>
-    </servlet-mapping> <!-- default /* -->
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>submitQuery</servlet-name>
         <url-pattern>/app/submitQuery</url-pattern>
