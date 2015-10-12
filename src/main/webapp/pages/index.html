@@ -41,8 +41,6 @@
                         <li ng-show="loggedIn" style="white-space: nowrap;"><a href="Profile.html">My profile</a></li>
                         <li ng-show="loggedIn" style="white-space: nowrap;"><a ng-click="logout()">Logout</a></li>
                         <li ng-show="!loggedIn" style="white-space: nowrap;"><a href="login.html">Login</a></li>
-
-                        <li><a ng-href="{{loginHref[loggedIn]}}" ng-click="loginFuncs[loggedIn]()" ng-bind-html="loginButtons[loggedIn]"></a></li>
                     </ul>
                 </nav>
 

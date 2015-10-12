@@ -147,7 +147,7 @@ public class mysqlConnector
             resultSet = statement.executeQuery();
             int answers = 0;
             Set<Integer> userSet = new HashSet<Integer>();
-            for(resultSet.first(); !resultSet.isAfterLast(); resultSet.next())
+            while(resultSet.next())
             {
                 answers++;
                 userSet.add(resultSet.getInt("user_id"));
@@ -169,7 +169,7 @@ public class mysqlConnector
             PreparedStatement statement = con.prepareStatement("SELECT * FROM queries WHERE user_id=?");
             statement.setInt(1, user_id);
             ResultSet resultSet = statement.executeQuery();
-            for(resultSet.first(); !resultSet.isAfterLast(); resultSet.next())
+            while (resultSet.next())
             {
                 result.add(new Query(
                         resultSet.getString("name"),
