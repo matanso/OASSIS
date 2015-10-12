@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Enumeration;
 
 /**
  * Created by matan on 01/10/15.
@@ -20,18 +21,25 @@ public class login extends HttpServlet
 {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        System.out.print("Logging in...");
         HttpSession session = request.getSession();
         JSONObject result = new JSONObject();
-        if((Boolean) session.getAttribute("loggedIn"))
+        Enumeration<String> en = session.getAttributeNames();
+        while(en.hasMoreElements())
         {
-            try
+            String key = en.nextElement();
+            if(key.equals("loggedIn") && (Boolean) session.getAttribute("loggedIn"))
             {
-                result.put("success", 0);
-            } catch (JSONException e)
-            {
-                e.printStackTrace();
+                try
+                {
+                    result.put("success", 0);
+                } catch (JSONException e)
+                {
+                    e.printStackTrace();
+                }
+                response.getWriter().print(result.toString());
+                return;
             }
-            response.getWriter().print(result.toString());
         }
 
         int id = LoginVerify.validateLogin(request);
