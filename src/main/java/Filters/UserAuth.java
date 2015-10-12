@@ -28,14 +28,14 @@ public class UserAuth implements Filter
                 // Continue
                 chain.doFilter(req, resp);
             }
-            else if(path.startsWith("/pages/assets/") || path.startsWith("/pages/images/") || path.startsWith("/pages/index.html"))
+            else if(path.startsWith("/pages/assets/") || path.startsWith("/pages/images/") || path.startsWith("/pages/index.html") || path.startsWith("/pages/index.html"))
             {
                 chain.doFilter(req, resp);
             }
             else
             {
                 // Redirect to homepage
-                req.getRequestDispatcher("index.html").forward(req, resp);
+                req.getRequestDispatcher("pages/index.html").forward(req, resp);
             }
         }
         catch (NullPointerException e)
