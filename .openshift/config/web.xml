@@ -3186,7 +3186,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>rq</extension>
-        <mime-type>application/sparql-query</mime-type>
+        <mime-type>application/query-query</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>rs</extension>
@@ -3464,7 +3464,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>srx</extension>
-        <mime-type>application/sparql-results+xml</mime-type>
+        <mime-type>application/query-results+xml</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>sse</extension>

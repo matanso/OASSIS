@@ -1,6 +1,12 @@
 package Libs;
 
+import structs.Query;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by matan on 06/10/15.
@@ -28,7 +34,8 @@ public class mysqlConnector
                             "id int not null auto_increment," +
                             "user_id int not null," +
                             "query_id int not null," +
-                            "timeout int not null" +
+                            "timeout int not null," +
+                            "answered boolean," +
                             "primary key(id))"};
     private Connection con;
 
@@ -119,5 +126,64 @@ public class mysqlConnector
             return false;
         }
         return true;
+    }
+
+    public Query getQuery(int id)
+    {
+        Query query = new Query("", "", 0, id, 0, 0);
+        try
+        {
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM queries WHERE id=?");
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if(!resultSet.first()){
+                return null;
+            }
+            query.setName(resultSet.getString("name"));
+            query.setQuery(resultSet.getString("query"));
+
+            statement = con.prepareStatement("SELECT user_id from questions WHERE query_id=? AND SOLVED=TRUE");
+            statement.setInt(1, id);
+            resultSet = statement.executeQuery();
+            int answers = 0;
+            Set<Integer> userSet = new HashSet<Integer>();
+            for(resultSet.first(); !resultSet.isAfterLast(); resultSet.next())
+            {
+                answers++;
+                userSet.add(resultSet.getInt("user_id"));
+            }
+            query.setAnswers(answers);
+            query.setUsers(userSet.size());
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return query;
+    }
+
+    public List<Query> getQueries(int user_id)
+    {
+        List<Query> result = new ArrayList<Query>();
+        try
+        {
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM queries WHERE user_id=?");
+            statement.setInt(1, user_id);
+            ResultSet resultSet = statement.executeQuery();
+            for(resultSet.first(); !resultSet.isAfterLast(); resultSet.next())
+            {
+                result.add(new Query(
+                        resultSet.getString("name"),
+                        resultSet.getString("query"),
+                        0, // TODO progress
+                        resultSet.getInt("id"),
+                        0,
+                        0
+                ));
+            }
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return result;
     }
 }
