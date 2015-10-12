@@ -6,7 +6,8 @@
 -->
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
-<script src="assets/js/loginController.js"></script>
+<script src="assets/js/HomepageApp.js"></script>
+<script style="assets/js/NavBarController.js"></script>
 
 <head>
     <title>Oassis</title>
@@ -20,7 +21,7 @@
 </head>
 <body class="homepage">
 <div id="page-wrapper">
-    <div ng-app="homepageApp" ng-controller="loginController">
+    <div ng-app="homepageApp">
         <!-- Header -->
         <div id="header-wrapper">
             <header id="header" class="container">
@@ -32,6 +33,7 @@
                 </div>
 
                 <!-- Nav -->
+                <div  ng-controller="NavBarController">
                 <nav id="nav">
                     <ul>
                         <li class="current" style="white-space: nowrap;"><a href="index.html">Home</a></li>
@@ -43,6 +45,7 @@
                         <li ng-show="!loggedIn" style="white-space: nowrap;"><a href="login.html">Login</a></li>
                     </ul>
                 </nav>
+                </div>
 
             </header>
         </div>

@@ -3,7 +3,6 @@
  */
 
 
-
 var app = angular.module('loginPageApp', []);
 
 app.controller('loginPageController', ['$scope', '$sce', '$http', function ($scope, $sce, $http) {
@@ -17,7 +16,7 @@ app.controller('loginPageController', ['$scope', '$sce', '$http', function ($sco
                 data: $.param({'loginType': 1, email: $scope.email, password: $scope.password})
             }
         ).then(function success(response) {
-            window.location.href = 'index.html'
+                window.location.href = 'index.html';
             },
             function error(response) {
                 console.log("error");
