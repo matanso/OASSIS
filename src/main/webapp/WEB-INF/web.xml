@@ -20,6 +20,12 @@
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 
+    <filter-mapping>
+    <filter-name>staticFilter</filter-name>
+    <url-pattern>*.html</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+</filter-mapping>
+
     <filter>
         <filter-name>authFilter</filter-name>
         <filter-class>Filters.UserAuth</filter-class>
