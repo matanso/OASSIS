@@ -21,12 +21,14 @@ public class mysqlConnector
                             "id int not null auto_increment," +
                             "name nvarchar(60)," +
                             "sparql TEXT CHARACTER SET utf8," +
-                            "userId int not null,"+
+                            "userId int not null," +
                             "primary key(id))",
 
                     "CREATE TABLE IF NOT EXISTS questions(" +
                             "id int not null auto_increment," +
                             "user_id int not null," +
+                            "query_id int not null," +
+                            "timeout int not null" +
                             "primary key(id))"};
     private Connection con;
 
