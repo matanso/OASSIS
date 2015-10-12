@@ -10,7 +10,7 @@ app.controller('newQueryController', ['$scope', '$sce', '$http', function ($scop
              url: '/app/submitQuery',
              method: "POST",
              headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-             data: $.param({name: $scope.name, sparql: $scope.sparql})
+             data: $.param({name: $scope.name, sparql: $scope.query})
          }).then(function success(response){
              window.location.href = 'myQueries.html';
          }, function error(response){
