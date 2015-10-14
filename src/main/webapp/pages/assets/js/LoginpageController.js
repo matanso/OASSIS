@@ -3,7 +3,7 @@
  */
 
 
-var app = angular.module('homepageApp', []);
+var app = angular.module('loginPageApp', []);
 
 app.controller('loginPageController', ['$scope', '$sce', '$http', function ($scope, $sce, $http) {
     $scope.new = false;
