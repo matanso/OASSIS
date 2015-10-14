@@ -13,5 +13,11 @@ app.controller('queryController', ['$scope', '$sce', '$http', '$location', funct
         window.location.href = 'index.html';
         return;
     }
-    $http.get('/app/getQuery?queryId=' + queryId).then(function success(response){$scope.query=response.data}, function error(response){});
+    function update_query(){
+        $http.get('/app/getQuery?queryId=' + queryId).then(function success(response){$scope.query=response.data}, function error(response){});
+    }
+    while(true)
+    {
+        update_query();
+    }
 }]);

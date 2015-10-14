@@ -27,6 +27,7 @@ public class Query extends HttpServlet
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        // TODO Secure
         HttpSession session = request.getSession();
         JSONObject result = new JSONObject();
         int success_code;

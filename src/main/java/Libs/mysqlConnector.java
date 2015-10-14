@@ -154,6 +154,7 @@ public class mysqlConnector
             }
             query.setAnswers(answers);
             query.setUsers(userSet.size());
+            query.setProgress(answers/20);
         } catch (SQLException e)
         {
             e.printStackTrace();
