@@ -1,7 +1,5 @@
 package Servlets;
 
-import Libs.LoginVerify;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.servlet.ServletException;
@@ -22,29 +20,7 @@ public class AnswerQuestion extends HttpServlet
     {
         HttpSession session = request.getSession();
         JSONObject result = new JSONObject();
-        int id = LoginVerify.validateLogin(request);
-        if (id > 0)
-        {
-            session.setAttribute("loggedIn", true);
-            session.setAttribute("userId", id);
-            try
-            {
-                result.put("success", 0);
-                result.put("userId", id);
-            } catch (JSONException e)
-            {
-                e.printStackTrace();
-            }
-        } else
-        {
-            try
-            {
-                result.put("success", 2);
-            } catch (JSONException e)
-            {
-                e.printStackTrace();
-            }
-        }
+
         response.getWriter().print(result.toString());
     }
 
