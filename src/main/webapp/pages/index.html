@@ -7,7 +7,7 @@
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
 <script src="assets/js/HomepageApp.js"></script>
-<script style="assets/js/NavBarController.js"></script>
+<script src="assets/js/NavBarController.js"></script>
 
 <head>
     <title>Oassis</title>
@@ -33,18 +33,20 @@
                 </div>
 
                 <!-- Nav -->
-                <div  ng-controller="NavBarController">
-                <nav id="nav">
-                    <ul>
-                        <li class="current" style="white-space: nowrap;"><a href="index.html">Home</a></li>
-                        <li><a href="#about" style="white-space: nowrap;">About</a></li>
-                        <li><a href="#main-wrapper" style="white-space: nowrap;">Contribute</a></li>
-                        <li ng-show="loggedIn" style="white-space: nowrap;"><a href="myQueries.html">My queries</a></li>
-                        <li ng-show="loggedIn" style="white-space: nowrap;"><a href="Profile.html">My profile</a></li>
-                        <li ng-show="loggedIn" style="white-space: nowrap;"><a href="logout.html">Logout</a></li>
-                        <li ng-show="!loggedIn" style="white-space: nowrap;"><a href="login.html">Login</a></li>
-                    </ul>
-                </nav>
+                <div ng-controller="navBarController">
+                    <nav id="nav">
+                        <ul>
+                            <li class="current" style="white-space: nowrap;"><a href="index.html">Home</a></li>
+                            <li><a href="#about" style="white-space: nowrap;">About</a></li>
+                            <li><a href="#main-wrapper" style="white-space: nowrap;">Contribute</a></li>
+                            <li ng-show="loggedIn" style="white-space: nowrap;"><a href="myQueries.html">My queries</a>
+                            </li>
+                            <li ng-show="loggedIn" style="white-space: nowrap;"><a href="Profile.html">My profile</a>
+                            </li>
+                            <li ng-show="loggedIn" style="white-space: nowrap;"><a href="logout.html">Logout</a></li>
+                            <li ng-show="!loggedIn" style="white-space: nowrap;"><a href="login.html">Login</a></li>
+                        </ul>
+                    </nav>
                 </div>
 
             </header>
@@ -167,10 +169,12 @@
                                 <h2>Contribute to our research</h2>
 
                                 <p>Become a collaborator! </p>
+
                                 <p>Oassis is an open-source project, founded by the Tel Aviv University.
                                     To reach the true potential, we need <strong>you</strong> to help
                                     us expand this project. Let's do this!</p>
-                                <a href="https://github.com/matanso/OASSIS" class="button icon fa-arrow-circle-right">Oassis on Github</a>
+                                <a href="https://github.com/matanso/OASSIS" class="button icon fa-arrow-circle-right">Oassis
+                                    on Github</a>
                             </section>
                         </div>
 
