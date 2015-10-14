@@ -19,4 +19,5 @@ app.controller('queryController', ['$scope', '$sce', '$http', '$location', funct
         });
     }
     update_query();
+    // comment
 }]);
