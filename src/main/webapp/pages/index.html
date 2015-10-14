@@ -39,9 +39,14 @@
                             <li class="current" style="white-space: nowrap;"><a href="index.html">Home</a></li>
                             <li><a href="#about" style="white-space: nowrap;">About</a></li>
                             <li><a href="#main-wrapper" style="white-space: nowrap;">Contribute</a></li>
+                            <li ng-show="queryMode" style="white-space: nowrap;"><a href="newQuery.html">Submit query</a>
+                            </li>
                             <li ng-show="queryMode" style="white-space: nowrap;"><a href="myQueries.html">My queries</a>
                             </li>
-                            <li ng-show="crowdMode" style="white-space: nowrap;"><a href="question.html">My queries</a>
+
+                            <li ng-show="crowdMode" style="white-space: nowrap;"><a href="question.html">Answer questions</a>
+                            </li>
+                            <li ng-show="crowdMode" style="white-space: nowrap;"><a href="awards.html">Awards</a>
                             </li>
                             <li ng-show="loggedIn" style="white-space: nowrap;"><a href="Profile.html">My profile</a>
                             </li>
