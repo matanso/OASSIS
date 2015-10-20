@@ -73,7 +73,7 @@
         <servlet-class>Servlets.FileServlet</servlet-class>
         <init-param>
             <param-name>basePath</param-name>
-            <param-value>/var/lib/openshift/560cf2430c1e66dc8d00001e/app-deployments/current/repo/src/main/webapp/pages/</param-value>
+            <param-value>/var/lib/tomcat7/webapps/ROOT/</param-value>
         </init-param>
     </servlet> <!-- File servlet (!! Openshift only !! TODO -->
 

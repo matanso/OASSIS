@@ -1,4 +1,4 @@
-package Oasis;
+package BackEnd;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,18 +17,21 @@ import org.openrdf.repository.sail.SailRepository;
 import org.openrdf.rio.RDFFormat;
 import org.openrdf.rio.RDFParseException;
 import org.openrdf.sail.memory.MemoryStore;
+import org.openrdf.sail.nativerdf.NativeStore;
 
 
 public class SPARQLQueryManager {
 	
 	private static Repository rep; /*same repository for every instance of query*/
 	private static String baseURI = "http://example.org/";
+	
+	
 	public SPARQLQueryManager() throws RepositoryException{
 		
 	}
 	
 	public static int loadOntology(File ontology)  {
-		/* input:
+		/* input: File ontology
 		   assumes ontology in TURTLE format. assumes repository is initialized.
 		   output: 0 = success
 		   		   1 = Repository Exception - if something went wrong with connecting to rep (such as rep doesn't exist)
@@ -86,8 +89,8 @@ public class SPARQLQueryManager {
 	}
 	
 	
-	public static int init(String ontology){
-		/*input: receives only one ontology which every query works with.
+	public static int init(String rdfDBPath){
+		/*input: receives rdfDBPath - a path to store ontologies.
 		 * output: starts up the repository, and loads ontology into it. 
 		 * 		   0 = success
 		   		   1 = Repository Exception - if something went wrong with connecting to rep (such as rep doesn't exist)
@@ -97,16 +100,14 @@ public class SPARQLQueryManager {
 		   		   */
 		
 		int res = 0;
-		File ontologyFile = null;
+		File dataDir = new File (rdfDBPath);
+		System.out.println(dataDir);
 		try {
-			rep = new SailRepository(new MemoryStore());
-			rep.initialize();
-			ontologyFile = new File(ontology);
-			
+			rep = new SailRepository(new NativeStore(dataDir));
+			rep.initialize();			
 		} catch (RepositoryException e) {
 			return 3;
 		}
-		res = loadOntology(ontologyFile);
 		return res;
 	}
 	

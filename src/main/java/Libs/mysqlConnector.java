@@ -64,18 +64,18 @@ public class mysqlConnector
         {
             e.printStackTrace();
         }
-        String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-        String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+        boolean dev = System.getenv("OPENSHIFT_HOMEDIR") == null;
+        String host = dev ? "localhost": System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+        String port = dev ? "3306": System.getenv("OPENSHIFT_MYSQL_DB_PORT");
         String name = "test";
-        String user = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
-        String password = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
+        String user = dev ? "root": System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+        String password = dev ? "10101010": System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
         String url = "jdbc:mysql://" + host + ":" + port + "/" + name;
         con = DriverManager.getConnection(url, user, password);
     }
 
     public void createTables()
     {
-
     }
 
     public int loginVerify(String email, String passhash)
