@@ -1,2 +1,0 @@
-{"name": "Elephants in NY city", "query": "SELECT * FROM NY WHERE IS_ELEPHANT=TRUE", "progress": 0.33, "id": 3,
-"users": 11, "answers": 34}
