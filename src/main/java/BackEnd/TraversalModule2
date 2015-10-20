@@ -1,4 +1,4 @@
-package Oasis;
+package BackEnd;
 
 import org.openrdf.query.BindingSet;
 import org.openrdf.query.TupleQueryResult;
