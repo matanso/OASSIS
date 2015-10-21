@@ -44,10 +44,6 @@ public class mysqlConnector
         try
         {
             Statement statement = con.createStatement();
-            for(String query: tables)
-            {
-                statement.execute(query);
-            }
             return true;
         } catch (SQLException e)
         {

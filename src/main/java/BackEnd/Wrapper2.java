@@ -29,9 +29,7 @@ public class Wrapper {
 			this.bindingSet = bindingSet;
 		}
 	}
-	
-	
-	
+
 	private static Map<String, TraversalModule> algoDic = 
 							new HashMap<String, TraversalModule>();/*query string is key, the algo that goes with it is value
 																	* private static Map<Integer, String> queryStringDic = 
