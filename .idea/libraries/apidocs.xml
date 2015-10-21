@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="apidocs">
-    <CLASSES />
-    <JAVADOC>
-      <root url="file://$USER_HOME$/openrdf-sesame-4.0.0/docs/apidocs" />
-    </JAVADOC>
-    <SOURCES />
-  </library>
-</component>
