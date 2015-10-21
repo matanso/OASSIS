@@ -26,7 +26,7 @@ import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
 
 public class NaiveAlgorithm extends TraversalModule {
-/*Notes: each instance of NaiveAlgorithm represents a different query. in each instance we start a graphDB where each node 
+/*Notes: each instance of NaiveAlgorithm represents a different query. in each instance we start a graphDB where each node
  * represents a valid assignment for said query. each node has metadata saved in the following way:
  * "__bindingSet" = saves the actual assignment.
  * "__significanceBit"  = saves the significance bit of the assignment representing if the assignment is currently significant or not, 
@@ -261,7 +261,7 @@ public class NaiveAlgorithm extends TraversalModule {
 	
 	public static void setGraphDB(String DBPath){
 		setDBPath(DBPath);
-		graphDB = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
+		graphDB = new GraphDatabaseFactory().newEmbeddedDatabase(DB_PATH);
 	}
 	public static GraphDatabaseService getGraphDB(){
 		return graphDB;

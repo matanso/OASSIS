@@ -6,14 +6,8 @@ import java.io.IOException;
 import org.openrdf.query.BindingSet;
 import org.openrdf.query.MalformedQueryException;
 import org.openrdf.query.QueryEvaluationException;
-import org.openrdf.query.TupleQueryResult;
-import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryException;
-import org.openrdf.repository.sail.SailRepository;
 import org.openrdf.rio.RDFParseException;
-import org.openrdf.sail.memory.MemoryStore;
-
-import com.google.gson.Gson;
 
 public class NaiveAlgorithmTest {
 
@@ -48,9 +42,10 @@ public class NaiveAlgorithmTest {
 		
 		/*test 1: ontology has 2 entries. userID 1 asks for question makes it significant then asks for another question and makes that significant too.*/
 		
-		Wrapper.init(ontology3);
+		Wrapper.init( "/Users/duanenickull/Software/neo4j-community-1.8.M01/", "Users/vain/danny2/CrowdSourcingTest2/");
+		Wrapper.loadOntology(ontology3);
 		
-		Wrapper.submitQuery(queryString, "/Users/duanenickull/Software/neo4j-community-1.8.M01/");
+		Wrapper.submitQuery(queryString);
 		
 		BindingSet bindingSet = (Wrapper.getQuestion(queryString, 1)).bindingSet;
 		System.out.print("for user = " + 1 + " assignment = ");
