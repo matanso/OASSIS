@@ -2,31 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7943d547-b59f-4a17-89ba-41fcee732d33" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Libs/Crypto.java" afterPath="$PROJECT_DIR$/src/main/java/Libs/Crypto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Servlets/FileServlet.java" afterPath="$PROJECT_DIR$/src/main/java/Servlets/FileServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Libs/LoginVerify.java" afterPath="$PROJECT_DIR$/src/main/java/Libs/LoginVerify.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/BackEnd/NaiveAlgorithm.java" afterPath="$PROJECT_DIR$/src/main/java/BackEnd/NaiveAlgorithm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/BackEnd/NaiveAlgorithmTest.java" afterPath="$PROJECT_DIR$/src/main/java/BackEnd/NaiveAlgorithmTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/pages/assets/js/NavBarController.js" afterPath="$PROJECT_DIR$/src/main/webapp/pages/assets/js/NavBarController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/pages/Profile.html" afterPath="$PROJECT_DIR$/src/main/webapp/pages/Profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Servlets/Queries.java" afterPath="$PROJECT_DIR$/src/main/java/Servlets/Queries.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Structs/Query.java" afterPath="$PROJECT_DIR$/src/main/java/Structs/Query.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/BackEnd/SPARQLQueryManager.java" afterPath="$PROJECT_DIR$/src/main/java/BackEnd/SPARQLQueryManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Filters/StaticFilter.java" afterPath="$PROJECT_DIR$/src/main/java/Filters/StaticFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/BackEnd/TraversalModule.java" afterPath="$PROJECT_DIR$/src/main/java/BackEnd/TraversalModule.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Wrapper.java" afterPath="$PROJECT_DIR$/src/main/java/BackEnd/Wrapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/flexjson_2_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/flexjson_2_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/pages/index.html" afterPath="$PROJECT_DIR$/src/main/webapp/pages/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/pages/login.html" afterPath="$PROJECT_DIR$/src/main/webapp/pages/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/BackEnd/main.java" afterPath="$PROJECT_DIR$/src/main/java/BackEnd/main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/pages/myQueries.html" afterPath="$PROJECT_DIR$/src/main/webapp/pages/myQueries.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Libs/mysqlConnector.java" afterPath="$PROJECT_DIR$/src/main/java/Libs/mysqlConnector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/neo4j.xml" afterPath="$PROJECT_DIR$/.idea/libraries/neo4j.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/pages/newQuery.html" afterPath="$PROJECT_DIR$/src/main/webapp/pages/newQuery.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/openrdf.xml" afterPath="$PROJECT_DIR$/.idea/libraries/openrdf.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/pages/assets/js/queryController.js" afterPath="$PROJECT_DIR$/src/main/webapp/pages/assets/js/queryController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.iml" afterPath="$PROJECT_DIR$/test.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/pages/viewQuery.html" afterPath="$PROJECT_DIR$/src/main/webapp/pages/viewQuery.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="test.iws" />
@@ -729,12 +704,19 @@
       <updated>1445415086123</updated>
       <workItem from="1445415089360" duration="97000" />
       <workItem from="1445415215690" duration="3724000" />
-      <workItem from="1445418961293" duration="295000" />
+      <workItem from="1445418961293" duration="372000" />
     </task>
+    <task id="LOCAL-00001" summary="Navbar customization">
+      <created>1445419323623</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1445419323623</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4116000" />
+    <option name="totallyTimeSpent" value="4193000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1365" y="0" width="1922" height="1081" extended-state="6" />
@@ -756,6 +738,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -786,6 +769,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="Navbar customization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Navbar customization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -874,6 +859,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4482">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#1678#1690#0" expanded="true" />
+            <element signature="e#1774#1783#0" expanded="true" />
+            <element signature="e#1876#1898#0" expanded="true" />
+            <element signature="e#1970#2002#0" expanded="true" />
+            <element signature="e#3974#3986#0" expanded="true" />
+            <element signature="e#5410#5442#0" expanded="true" />
+            <element signature="e#8272#8304#0" expanded="true" />
+            <element signature="e#8674#8706#0" expanded="true" />
+            <element signature="e#9077#9109#0" expanded="true" />
+            <element signature="e#9514#9515#0" expanded="true" />
+            <element signature="e#9546#9547#0" expanded="true" />
+            <element signature="e#9769#9770#0" expanded="true" />
+            <element signature="e#9799#9800#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -903,6 +903,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.452459" vertical-offset="0" max-vertical-offset="915">
           <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -910,6 +911,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.744262" vertical-offset="4485" max-vertical-offset="5400">
           <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding>
+            <element signature="e#1678#1690#0" expanded="true" />
+            <element signature="e#1774#1783#0" expanded="true" />
+            <element signature="e#1876#1898#0" expanded="true" />
+            <element signature="e#1970#2002#0" expanded="true" />
+            <element signature="e#3974#3986#0" expanded="true" />
+            <element signature="e#5410#5442#0" expanded="true" />
+            <element signature="e#8272#8304#0" expanded="true" />
+            <element signature="e#8674#8706#0" expanded="true" />
+            <element signature="e#9077#9109#0" expanded="true" />
+            <element signature="e#9514#9515#0" expanded="true" />
+            <element signature="e#9546#9547#0" expanded="true" />
+            <element signature="e#9769#9770#0" expanded="true" />
+            <element signature="e#9799#9800#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -917,6 +933,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
