@@ -726,7 +726,7 @@
       <updated>1445415086123</updated>
       <workItem from="1445415089360" duration="97000" />
       <workItem from="1445415215690" duration="3724000" />
-      <workItem from="1445418961293" duration="2195000" />
+      <workItem from="1445418961293" duration="2344000" />
     </task>
     <task id="LOCAL-00001" summary="Navbar customization">
       <created>1445419323623</created>
@@ -750,11 +750,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6016000" />
+    <option name="totallyTimeSpent" value="6165000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1365" y="0" width="1922" height="1081" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
