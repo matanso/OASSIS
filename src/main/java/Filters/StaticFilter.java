@@ -23,7 +23,12 @@ public class StaticFilter implements Filter
         if (path.startsWith("/app"))
         {
             chain.doFilter(req, resp); // Goes to default servlet.
-        } else
+        }
+        else if(path.equals("/"))
+        {
+            request.getRequestDispatcher("/pages/index.html").forward(req, resp);
+        }
+        else
         {
             request.getRequestDispatcher("/pages" + path).forward(req, resp);
         }

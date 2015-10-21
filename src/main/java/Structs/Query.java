@@ -89,6 +89,7 @@ public class Query
     {
         return toJSON().toString();
     }
+
     public JSONObject toJSON()
     {
         JSONObject res = new JSONObject();

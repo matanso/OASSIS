@@ -9,9 +9,10 @@ public class Crypto
 {
     public static String md5Hash(String text)
     {
-        try{
-        return new String(MessageDigest.getInstance("md5").digest(text.getBytes()));
-        }catch (Exception e)
+        try
+        {
+            return new String(MessageDigest.getInstance("md5").digest(text.getBytes()));
+        } catch (Exception e)
         {
             return "";
         }

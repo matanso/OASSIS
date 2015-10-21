@@ -9,6 +9,7 @@
     <title>Oassis</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
     <script src="assets/js/queriesController.js"></script>
+    <script src="assets/js/NavBarController.js"></script>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!--[if lte IE 8]>
@@ -18,7 +19,7 @@
     <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
 </head>
 <body class="no-sidebar">
-<div ng-app="queriesApp" ng-controller="queriesController">
+<div ng-app="queriesApp">
 
     <div id="page-wrapper">
 
@@ -32,40 +33,55 @@
                     <!--<span>by HTML5 UP</span> -->
                 </div>
 
-                <!-- Nav -->
-                <nav id="nav">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#about">About</a></li>
-                        <li><a href="index.html#main-wrapper">Contribute</a></li>
-                        <li class="current"><a href="myQueries.html">My queries</a></li>
-                        <li><a href="Profile.html">My profile</a></li>
-                        <li><a href="logout.html">Logout</a></li>
-                    </ul>
-                </nav>
+                <div ng-controller="navBarController">
+                    <nav id="nav">
+                        <ul>
+                            <li class="current" style="white-space: nowrap;"><a href="index.html">Home</a></li>
+                            <li><a href="#about" style="white-space: nowrap;">About</a></li>
+                            <li><a href="#main-wrapper" style="white-space: nowrap;">Contribute</a></li>
+                            <li ng-show="queryMode" style="white-space: nowrap;"><a href="newQuery.html">Submit
+                                query</a>
+                            </li>
+                            <li ng-show="queryMode" style="white-space: nowrap;"><a href="myQueries.html">My queries</a>
+                            </li>
+
+                            <li ng-show="crowdMode" style="white-space: nowrap;"><a href="question.html">Answer
+                                questions</a>
+                            </li>
+                            <li ng-show="crowdMode" style="white-space: nowrap;"><a href="awards.html">Awards</a>
+                            </li>
+                            <li ng-show="loggedIn" style="white-space: nowrap;"><a href="Profile.html">My profile</a>
+                            </li>
+                            <li ng-show="loggedIn" style="white-space: nowrap;"><a href="logout.html">Logout</a></li>
+                            <li ng-show="!loggedIn" style="white-space: nowrap;"><a href="login.html">Login</a></li>
+                        </ul>
+                    </nav>
+                </div>
 
             </header>
         </div>
 
         <!-- Main -->
-        <div id="main-wrapper">
-            <div class="container">
-                <div id="content">
+        <div ng-controller="queriesController">
+            <div id="main-wrapper">
+                <div class="container">
+                    <div id="content">
 
-                    <!-- Content -->
-                    <article>
+                        <!-- Content -->
+                        <article>
 
-                        <h2>My queries</h2>
-                        <br/>
-                        <ul>
-                            <p ng-repeat-start="query in queries">
-                            <li><a ng-click="view_query(query.id)"><h3>{{query.name}}</h3></a></li>
-                            <progress ng-repeat-end value="{{query.progress}}"></progress>
-                            </p>
-                        </ul>
-                    </article>
-                    <h5><a href="newQuery.html">New query</a></h5>
+                            <h2>My queries</h2>
+                            <br/>
+                            <ul>
+                                <p ng-repeat-start="query in queries">
+                                <li><a ng-click="view_query(query.id)"><h3>{{query.name}}</h3></a></li>
+                                <progress ng-repeat-end value="{{query.progress}}"></progress>
+                                </p>
+                            </ul>
+                        </article>
+                        <h5><a href="newQuery.html">New query</a></h5>
 
+                    </div>
                 </div>
             </div>
         </div>

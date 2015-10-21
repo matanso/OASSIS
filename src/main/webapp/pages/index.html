@@ -22,42 +22,28 @@
 <body class="homepage">
 <div id="page-wrapper">
     <div ng-app="homepageApp">
+
         <div ng-controller="navBarController">
-            <!-- Header -->
-            <div id="header-wrapper">
-                <header id="header" class="container">
+        <!-- Header -->
+        <div id="header-wrapper">
+            <header id="header" class="container">
 
-                    <!-- Logo -->
-                    <div id="logo">
-                        <h1><a href="index.html">Oassis</a></h1>
-                        <!--<span>by HTML5 UP</span> -->
-                    </div>
+                <!-- Logo -->
+                <div id="logo">
+                    <h1><a href="index.html">Oassis</a></h1>
+                    <!--<span>by HTML5 UP</span> -->
+                </div>
 
-                    <!-- Nav bar -->
+                <!-- Nav bar -->
                     <nav id="nav">
                         <ul>
-                            <li class="current" style="white-space: nowrap;"><a href="index.html">Home</a></li>
-                            <li><a href="#about" style="white-space: nowrap;">About</a></li>
-                            <li><a href="#main-wrapper" style="white-space: nowrap;">Contribute</a></li>
-                            <li ng-show="queryMode" style="white-space: nowrap;"><a href="newQuery.html">Submit query</a>
-                            </li>
-                            <li ng-show="queryMode" style="white-space: nowrap;"><a href="myQueries.html">My queries</a>
-                            </li>
-
-                            <li ng-show="crowdMode" style="white-space: nowrap;"><a href="question.html">Answer questions</a>
-                            </li>
-                            <li ng-show="crowdMode" style="white-space: nowrap;"><a href="awards.html">Awards</a>
-                            </li>
-                            <li ng-show="loggedIn" style="white-space: nowrap;"><a href="Profile.html">My profile</a>
-                            </li>
-                            <li ng-show="loggedIn" style="white-space: nowrap;"><a href="logout.html">Logout</a></li>
-                            <li ng-show="!loggedIn" style="white-space: nowrap;"><a href="login.html">Login</a></li>
+                            <div ng-repeat="button in buttons">
+                                <li ng-class="button.class" style="white-space: nowrap;"><a ng-href="button.href">{{button.text}}</a></li>
+                            </div>
                         </ul>
                     </nav>
 
-
-                </header>
-            </div>
+            </header>
 
             <!-- Banner -->
             <div id="banner-wrapper">
@@ -65,18 +51,19 @@
                     <div class="row">
                         <div class="7u 12u(medium)">
                             <h2>Welcome to Oassis</h2>
-
                             <p>An open-source crowdsourcing platform.</p>
                         </div>
                         <div class="5u 12u(medium)">
                             <ul>
-                                <li><a ng-click="clickBig()" class="button big icon fa-arrow-circle-right">{{buttonText}}</a></li>
+                                <li><a ng-click="clickBig()" class="button big icon fa-arrow-circle-right">{{buttonText}}</a>
+                                </li>
                                 <li><a href="#about" class="button alt big icon fa-question-circle">More info</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
             <!-- Features -->
             <div id="features-wrapper">

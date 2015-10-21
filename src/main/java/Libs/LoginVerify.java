@@ -15,8 +15,9 @@ public class LoginVerify
     {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        try{
-            return new mysqlConnector().loginVerify(email, Crypto.md5Hash(email+password));
+        try
+        {
+            return new mysqlConnector().loginVerify(email, Crypto.md5Hash(email + password));
         } catch (SQLException e)
         {
             e.printStackTrace();

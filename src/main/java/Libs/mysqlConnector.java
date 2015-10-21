@@ -51,6 +51,7 @@ public class mysqlConnector
         }
         return false;
     }
+
     public mysqlConnector() throws SQLException
     {
         try
@@ -61,11 +62,11 @@ public class mysqlConnector
             e.printStackTrace();
         }
         boolean dev = System.getenv("OPENSHIFT_HOMEDIR") == null;
-        String host = dev ? "localhost": System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-        String port = dev ? "3306": System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+        String host = dev ? "localhost" : System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+        String port = dev ? "3306" : System.getenv("OPENSHIFT_MYSQL_DB_PORT");
         String name = "test";
-        String user = dev ? "root": System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
-        String password = dev ? "10101010": System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
+        String user = dev ? "root" : System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+        String password = dev ? "10101010" : System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
         String url = "jdbc:mysql://" + host + ":" + port + "/" + name;
         con = DriverManager.getConnection(url, user, password);
     }
@@ -111,7 +112,9 @@ public class mysqlConnector
         }
         return false;
     }
-    public boolean submitQuery(String name, int user_id, String sparql){
+
+    public boolean submitQuery(String name, int user_id, String sparql)
+    {
         try
         {
             PreparedStatement statement = con.prepareStatement("INSERT INTO queries (name, userId, sparql) VALUES (?, ?, ?)");
@@ -135,7 +138,8 @@ public class mysqlConnector
             PreparedStatement statement = con.prepareStatement("SELECT * FROM queries WHERE id=?");
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
-            if(!resultSet.first()){
+            if (!resultSet.first())
+            {
                 return null;
             }
             query.setName(resultSet.getString("name"));
@@ -146,14 +150,14 @@ public class mysqlConnector
             resultSet = statement.executeQuery();
             int answers = 0;
             Set<Integer> userSet = new HashSet<Integer>();
-            while(resultSet.next())
+            while (resultSet.next())
             {
                 answers++;
                 userSet.add(resultSet.getInt("user_id"));
             }
             query.setAnswers(answers);
             query.setUsers(userSet.size());
-            query.setProgress(answers/20);
+            query.setProgress(answers / 20);
         } catch (SQLException e)
         {
             e.printStackTrace();

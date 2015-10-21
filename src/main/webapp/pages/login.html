@@ -9,6 +9,7 @@
     <title>Oassis</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
     <script src="assets/js/LoginpageController.js"></script>
+    <script src="assets/js/NavBarController.js"></script>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!--[if lte IE 8]>
@@ -17,37 +18,50 @@
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
 </head>
-<body class="no-sidebar">
-<div ng-app="loginPageApp" ng-controller="loginPageController">
-    <div id="page-wrapper">
+<body class="no-sidebar"  ng-app="loginPageApp">
+<div id="page-wrapper">
 
-        <!-- Header -->
-        <div id="header-wrapper">
-            <header id="header" class="container">
+    <!-- Header -->
+    <div id="header-wrapper">
+        <header id="header" class="container">
 
-                <!-- Logo -->
-                <div id="logo">
-                    <h1><a href="index.html">Oassis</a></h1>
-                    <!--<span>by HTML5 UP</span> -->
-                </div>
+            <!-- Logo -->
+            <div id="logo">
+                <h1><a href="index.html">Oassis</a></h1>
+                <!--<span>by HTML5 UP</span> -->
+            </div>
 
-                <!-- Nav -->
+            <div ng-controller="navBarController">
                 <nav id="nav">
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#about">About</a></li>
-                        <li><a href="index.html#main-wrapper">Contribute</a></li>
-                        <li class="current"><a href="login.html">Login</a></li>
+                        <li class="current" style="white-space: nowrap;"><a href="index.html">Home</a></li>
+                        <li><a href="#about" style="white-space: nowrap;">About</a></li>
+                        <li><a href="#main-wrapper" style="white-space: nowrap;">Contribute</a></li>
+                        <li ng-show="queryMode" style="white-space: nowrap;"><a href="newQuery.html">Submit query</a>
+                        </li>
+                        <li ng-show="queryMode" style="white-space: nowrap;"><a href="myQueries.html">My queries</a>
+                        </li>
+
+                        <li ng-show="crowdMode" style="white-space: nowrap;"><a href="question.html">Answer
+                            questions</a>
+                        </li>
+                        <li ng-show="crowdMode" style="white-space: nowrap;"><a href="awards.html">Awards</a>
+                        </li>
+                        <li ng-show="loggedIn" style="white-space: nowrap;"><a href="Profile.html">My profile</a>
+                        </li>
+                        <li ng-show="loggedIn" style="white-space: nowrap;"><a href="logout.html">Logout</a></li>
+                        <li ng-show="!loggedIn" style="white-space: nowrap;"><a href="login.html">Login</a></li>
                     </ul>
                 </nav>
+            </div>
 
-            </header>
-        </div>
+        </header>
+    </div>
 
-        <!-- Main -->
+    <!-- Main -->
         <div id="main-wrapper">
             <div class="container">
-                <div id="content">
+                <div id="content"  ng-controller="loginPageController">
                     <form>
                         <label ng-show="new">
                             Full name:<input type="text" name="Name" value="name" ng-model="name">
@@ -152,8 +166,6 @@
                 </div>
             </footer>
         </div>
-
-    </div>
 
     <!-- Scripts -->
 

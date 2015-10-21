@@ -26,9 +26,8 @@
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.25" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:3.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20080701" level="project" />
-    <orderEntry type="library" name="apidocs" level="project" />
+    <orderEntry type="library" name="flexjson-2.1" level="project" />
     <orderEntry type="library" name="openrdf" level="project" />
     <orderEntry type="library" name="neo4j" level="project" />
-    <orderEntry type="library" name="flexjson-2.1" level="project" />
   </component>
 </module>

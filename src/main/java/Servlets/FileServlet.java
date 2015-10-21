@@ -36,7 +36,8 @@ import java.util.zip.GZIPOutputStream;
  * @author BalusC
  * @link http://balusc.blogspot.com/2009/02/fileservlet-supporting-resume-and.html
  */
-public class FileServlet extends HttpServlet {
+public class FileServlet extends HttpServlet
+{
 
     // Constants ----------------------------------------------------------------------------------
 
@@ -52,25 +53,32 @@ public class FileServlet extends HttpServlet {
 
     /**
      * Initialize the servlet.
+     *
      * @see HttpServlet#init().
      */
-    public void init() throws ServletException {
+    public void init() throws ServletException
+    {
 
         // Get base path (path to get all resources from) as init parameter.
         this.basePath = getInitParameter("basePath");
 
         // Validate base path.
-        if (this.basePath == null) {
+        if (this.basePath == null)
+        {
             throw new ServletException("FileServlet init param 'basePath' is required.");
-        } else {
+        } else
+        {
             File path = new File(this.basePath);
-            if (!path.exists()) {
+            if (!path.exists())
+            {
                 throw new ServletException("FileServlet init param 'basePath' value '"
                         + this.basePath + "' does actually not exist in file system.");
-            } else if (!path.isDirectory()) {
+            } else if (!path.isDirectory())
+            {
                 throw new ServletException("FileServlet init param 'basePath' value '"
                         + this.basePath + "' is actually not a directory in file system.");
-            } else if (!path.canRead()) {
+            } else if (!path.canRead())
+            {
                 throw new ServletException("FileServlet init param 'basePath' value '"
                         + this.basePath + "' is actually not readable in file system.");
             }
@@ -79,6 +87,7 @@ public class FileServlet extends HttpServlet {
 
     /**
      * Process HEAD request. This returns the same headers as GET request, but without content.
+     *
      * @see HttpServlet#doHead(HttpServletRequest, HttpServletResponse).
      */
     protected void doHead(HttpServletRequest request, HttpServletResponse response)
@@ -90,6 +99,7 @@ public class FileServlet extends HttpServlet {
 
     /**
      * Process GET request.
+     *
      * @see HttpServlet#doGet(HttpServletRequest, HttpServletResponse).
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -101,9 +111,10 @@ public class FileServlet extends HttpServlet {
 
     /**
      * Process the actual request.
-     * @param request The request to be processed.
+     *
+     * @param request  The request to be processed.
      * @param response The response to be created.
-     * @param content Whether the request body should be written (GET) or not (HEAD).
+     * @param content  Whether the request body should be written (GET) or not (HEAD).
      * @throws IOException If something fails at I/O level.
      */
     private void processRequest
@@ -116,7 +127,8 @@ public class FileServlet extends HttpServlet {
         String requestedFile = request.getPathInfo();
 
         // Check if file is actually supplied to the request URL.
-        if (requestedFile == null) {
+        if (requestedFile == null)
+        {
             // Do your thing if the file is not supplied to the request URL.
             // Throw an exception, or send 404, or show default/warning page, or just ignore it.
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -127,7 +139,8 @@ public class FileServlet extends HttpServlet {
         File file = new File(basePath, URLDecoder.decode(requestedFile, "UTF-8"));
 
         // Check if file actually exists in filesystem.
-        if (!file.exists()) {
+        if (!file.exists())
+        {
             // Do your thing if the file appears to be non-existing.
             // Throw an exception, or send 404, or show default/warning page, or just ignore it.
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -146,7 +159,8 @@ public class FileServlet extends HttpServlet {
 
         // If-None-Match header should contain "*" or ETag. If so, then return 304.
         String ifNoneMatch = request.getHeader("If-None-Match");
-        if (ifNoneMatch != null && matches(ifNoneMatch, eTag)) {
+        if (ifNoneMatch != null && matches(ifNoneMatch, eTag))
+        {
             response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
             response.setHeader("ETag", eTag); // Required in 304.
             response.setDateHeader("Expires", expires); // Postpone cache with 1 week.
@@ -156,7 +170,8 @@ public class FileServlet extends HttpServlet {
         // If-Modified-Since header should be greater than LastModified. If so, then return 304.
         // This header is ignored if any If-None-Match header is specified.
         long ifModifiedSince = request.getDateHeader("If-Modified-Since");
-        if (ifNoneMatch == null && ifModifiedSince != -1 && ifModifiedSince + 1000 > lastModified) {
+        if (ifNoneMatch == null && ifModifiedSince != -1 && ifModifiedSince + 1000 > lastModified)
+        {
             response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
             response.setHeader("ETag", eTag); // Required in 304.
             response.setDateHeader("Expires", expires); // Postpone cache with 1 week.
@@ -168,14 +183,16 @@ public class FileServlet extends HttpServlet {
 
         // If-Match header should contain "*" or ETag. If not, then return 412.
         String ifMatch = request.getHeader("If-Match");
-        if (ifMatch != null && !matches(ifMatch, eTag)) {
+        if (ifMatch != null && !matches(ifMatch, eTag))
+        {
             response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED);
             return;
         }
 
         // If-Unmodified-Since header should be greater than LastModified. If not, then return 412.
         long ifUnmodifiedSince = request.getDateHeader("If-Unmodified-Since");
-        if (ifUnmodifiedSince != -1 && ifUnmodifiedSince + 1000 <= lastModified) {
+        if (ifUnmodifiedSince != -1 && ifUnmodifiedSince + 1000 <= lastModified)
+        {
             response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED);
             return;
         }
@@ -189,10 +206,12 @@ public class FileServlet extends HttpServlet {
 
         // Validate and process Range and If-Range headers.
         String range = request.getHeader("Range");
-        if (range != null) {
+        if (range != null)
+        {
 
             // Range header should match format "bytes=n-n,n-n,n-n...". If not, then return 416.
-            if (!range.matches("^bytes=\\d*-\\d*(,\\d*-\\d*)*$")) {
+            if (!range.matches("^bytes=\\d*-\\d*(,\\d*-\\d*)*$"))
+            {
                 response.setHeader("Content-Range", "bytes */" + length); // Required in 416.
                 response.sendError(HttpServletResponse.SC_REQUESTED_RANGE_NOT_SATISFIABLE);
                 return;
@@ -201,34 +220,43 @@ public class FileServlet extends HttpServlet {
             // If-Range header should either match ETag or be greater then LastModified. If not,
             // then return full file.
             String ifRange = request.getHeader("If-Range");
-            if (ifRange != null && !ifRange.equals(eTag)) {
-                try {
+            if (ifRange != null && !ifRange.equals(eTag))
+            {
+                try
+                {
                     long ifRangeTime = request.getDateHeader("If-Range"); // Throws IAE if invalid.
-                    if (ifRangeTime != -1 && ifRangeTime + 1000 < lastModified) {
+                    if (ifRangeTime != -1 && ifRangeTime + 1000 < lastModified)
+                    {
                         ranges.add(full);
                     }
-                } catch (IllegalArgumentException ignore) {
+                } catch (IllegalArgumentException ignore)
+                {
                     ranges.add(full);
                 }
             }
 
             // If any valid If-Range header, then process each part of byte range.
-            if (ranges.isEmpty()) {
-                for (String part : range.substring(6).split(",")) {
+            if (ranges.isEmpty())
+            {
+                for (String part : range.substring(6).split(","))
+                {
                     // Assuming a file with length of 100, the following examples returns bytes at:
                     // 50-80 (50 to 80), 40- (40 to length=100), -20 (length-20=80 to length=100).
                     long start = sublong(part, 0, part.indexOf("-"));
                     long end = sublong(part, part.indexOf("-") + 1, part.length());
 
-                    if (start == -1) {
+                    if (start == -1)
+                    {
                         start = length - end;
                         end = length - 1;
-                    } else if (end == -1 || end > length - 1) {
+                    } else if (end == -1 || end > length - 1)
+                    {
                         end = length - 1;
                     }
 
                     // Check if Range is syntactically valid. If not, then return 416.
-                    if (start > end) {
+                    if (start > end)
+                    {
                         response.setHeader("Content-Range", "bytes */" + length); // Required in 416.
                         response.sendError(HttpServletResponse.SC_REQUESTED_RANGE_NOT_SATISFIABLE);
                         return;
@@ -251,13 +279,15 @@ public class FileServlet extends HttpServlet {
         // If content type is unknown, then set the default value.
         // For all content types, see: http://www.w3schools.com/media/media_mimeref.asp
         // To add new content types, add new mime-mapping entry in web.xml.
-        if (contentType == null) {
+        if (contentType == null)
+        {
             contentType = "application/octet-stream";
         }
 
         // If content type is text, then determine whether GZIP content encoding is supported by
         // the browser and expand content type with the one and right character encoding.
-        if (contentType.startsWith("text")) {
+        if (contentType.startsWith("text"))
+        {
             String acceptEncoding = request.getHeader("Accept-Encoding");
             acceptsGzip = acceptEncoding != null && accepts(acceptEncoding, "gzip");
             contentType += ";charset=UTF-8";
@@ -265,7 +295,8 @@ public class FileServlet extends HttpServlet {
 
         // Else, expect for images, determine content disposition. If content type is supported by
         // the browser, then set to inline, else attachment which will pop a 'save as' dialogue.
-        else if (!contentType.startsWith("image")) {
+        else if (!contentType.startsWith("image"))
+        {
             String accept = request.getHeader("Accept");
             disposition = accept != null && accepts(accept, contentType) ? "inline" : "attachment";
         }
@@ -286,24 +317,29 @@ public class FileServlet extends HttpServlet {
         RandomAccessFile input = null;
         OutputStream output = null;
 
-        try {
+        try
+        {
             // Open streams.
             input = new RandomAccessFile(file, "r");
             output = response.getOutputStream();
 
-            if (ranges.isEmpty() || ranges.get(0) == full) {
+            if (ranges.isEmpty() || ranges.get(0) == full)
+            {
 
                 // Return full file.
                 Range r = full;
                 response.setContentType(contentType);
                 response.setHeader("Content-Range", "bytes " + r.start + "-" + r.end + "/" + r.total);
 
-                if (content) {
-                    if (acceptsGzip) {
+                if (content)
+                {
+                    if (acceptsGzip)
+                    {
                         // The browser accepts GZIP, so GZIP the content.
                         response.setHeader("Content-Encoding", "gzip");
                         output = new GZIPOutputStream(output, DEFAULT_BUFFER_SIZE);
-                    } else {
+                    } else
+                    {
                         // Content length is not directly predictable in case of GZIP.
                         // So only add it if there is no means of GZIP, else browser will hang.
                         response.setHeader("Content-Length", String.valueOf(r.length));
@@ -313,7 +349,8 @@ public class FileServlet extends HttpServlet {
                     copy(input, output, r.start, r.length);
                 }
 
-            } else if (ranges.size() == 1) {
+            } else if (ranges.size() == 1)
+            {
 
                 // Return single part of file.
                 Range r = ranges.get(0);
@@ -322,23 +359,27 @@ public class FileServlet extends HttpServlet {
                 response.setHeader("Content-Length", String.valueOf(r.length));
                 response.setStatus(HttpServletResponse.SC_PARTIAL_CONTENT); // 206.
 
-                if (content) {
+                if (content)
+                {
                     // Copy single part range.
                     copy(input, output, r.start, r.length);
                 }
 
-            } else {
+            } else
+            {
 
                 // Return multiple parts of file.
                 response.setContentType("multipart/byteranges; boundary=" + MULTIPART_BOUNDARY);
                 response.setStatus(HttpServletResponse.SC_PARTIAL_CONTENT); // 206.
 
-                if (content) {
+                if (content)
+                {
                     // Cast back to ServletOutputStream to get the easy println methods.
                     ServletOutputStream sos = (ServletOutputStream) output;
 
                     // Copy multi part range.
-                    for (Range r : ranges) {
+                    for (Range r : ranges)
+                    {
                         // Add multipart boundary and header fields for every range.
                         sos.println();
                         sos.println("--" + MULTIPART_BOUNDARY);
@@ -354,7 +395,8 @@ public class FileServlet extends HttpServlet {
                     sos.println("--" + MULTIPART_BOUNDARY + "--");
                 }
             }
-        } finally {
+        } finally
+        {
             // Gently close streams.
             close(output);
             close(input);
@@ -365,11 +407,13 @@ public class FileServlet extends HttpServlet {
 
     /**
      * Returns true if the given accept header accepts the given value.
+     *
      * @param acceptHeader The accept header.
-     * @param toAccept The value to be accepted.
+     * @param toAccept     The value to be accepted.
      * @return True if the given accept header accepts the given value.
      */
-    private static boolean accepts(String acceptHeader, String toAccept) {
+    private static boolean accepts(String acceptHeader, String toAccept)
+    {
         String[] acceptValues = acceptHeader.split("\\s*(,|;)\\s*");
         Arrays.sort(acceptValues);
         return Arrays.binarySearch(acceptValues, toAccept) > -1
@@ -379,11 +423,13 @@ public class FileServlet extends HttpServlet {
 
     /**
      * Returns true if the given match header matches the given value.
+     *
      * @param matchHeader The match header.
-     * @param toMatch The value to be matched.
+     * @param toMatch     The value to be matched.
      * @return True if the given match header matches the given value.
      */
-    private static boolean matches(String matchHeader, String toMatch) {
+    private static boolean matches(String matchHeader, String toMatch)
+    {
         String[] matchValues = matchHeader.split("\\s*,\\s*");
         Arrays.sort(matchValues);
         return Arrays.binarySearch(matchValues, toMatch) > -1
@@ -393,21 +439,24 @@ public class FileServlet extends HttpServlet {
     /**
      * Returns a substring of the given string value from the given begin index to the given end
      * index as a long. If the substring is empty, then -1 will be returned
-     * @param value The string value to return a substring as long for.
+     *
+     * @param value      The string value to return a substring as long for.
      * @param beginIndex The begin index of the substring to be returned as long.
-     * @param endIndex The end index of the substring to be returned as long.
+     * @param endIndex   The end index of the substring to be returned as long.
      * @return A substring of the given string value as long or -1 if substring is empty.
      */
-    private static long sublong(String value, int beginIndex, int endIndex) {
+    private static long sublong(String value, int beginIndex, int endIndex)
+    {
         String substring = value.substring(beginIndex, endIndex);
         return (substring.length() > 0) ? Long.parseLong(substring) : -1;
     }
 
     /**
      * Copy the given byte range of the given input to the given output.
-     * @param input The input to copy the given range to the given output for.
+     *
+     * @param input  The input to copy the given range to the given output for.
      * @param output The output to copy the given range from the given input for.
-     * @param start Start of the byte range.
+     * @param start  Start of the byte range.
      * @param length Length of the byte range.
      * @throws IOException If something fails at I/O level.
      */
@@ -417,20 +466,26 @@ public class FileServlet extends HttpServlet {
         byte[] buffer = new byte[DEFAULT_BUFFER_SIZE];
         int read;
 
-        if (input.length() == length) {
+        if (input.length() == length)
+        {
             // Write full range.
-            while ((read = input.read(buffer)) > 0) {
+            while ((read = input.read(buffer)) > 0)
+            {
                 output.write(buffer, 0, read);
             }
-        } else {
+        } else
+        {
             // Write partial range.
             input.seek(start);
             long toRead = length;
 
-            while ((read = input.read(buffer)) > 0) {
-                if ((toRead -= read) > 0) {
+            while ((read = input.read(buffer)) > 0)
+            {
+                if ((toRead -= read) > 0)
+                {
                     output.write(buffer, 0, read);
-                } else {
+                } else
+                {
                     output.write(buffer, 0, (int) toRead + read);
                     break;
                 }
@@ -440,13 +495,18 @@ public class FileServlet extends HttpServlet {
 
     /**
      * Close the given resource.
+     *
      * @param resource The resource to be closed.
      */
-    private static void close(Closeable resource) {
-        if (resource != null) {
-            try {
+    private static void close(Closeable resource)
+    {
+        if (resource != null)
+        {
+            try
+            {
                 resource.close();
-            } catch (IOException ignore) {
+            } catch (IOException ignore)
+            {
                 // Ignore IOException. If you want to handle this anyway, it might be useful to know
                 // that this will generally only be thrown when the client aborted the request.
             }
@@ -458,7 +518,8 @@ public class FileServlet extends HttpServlet {
     /**
      * This class represents a byte range.
      */
-    protected class Range {
+    protected class Range
+    {
         long start;
         long end;
         long length;
@@ -466,11 +527,13 @@ public class FileServlet extends HttpServlet {
 
         /**
          * Construct a byte range.
+         *
          * @param start Start of the byte range.
-         * @param end End of the byte range.
+         * @param end   End of the byte range.
          * @param total Total length of the byte source.
          */
-        public Range(long start, long end, long total) {
+        public Range(long start, long end, long total)
+        {
             this.start = start;
             this.end = end;
             this.length = end - start + 1;
