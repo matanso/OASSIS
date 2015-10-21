@@ -34,28 +34,13 @@
 
                 <!-- Nav -->
                 <div ng-controller="navBarController">
-                    <nav id="nav">
-                        <ul>
-                            <li class="current" style="white-space: nowrap;"><a href="index.html">Home</a></li>
-                            <li><a href="#about" style="white-space: nowrap;">About</a></li>
-                            <li><a href="#main-wrapper" style="white-space: nowrap;">Contribute</a></li>
-                            <li ng-show="queryMode" style="white-space: nowrap;"><a href="newQuery.html">Submit
-                                query</a>
-                            </li>
-                            <li ng-show="queryMode" style="white-space: nowrap;"><a href="myQueries.html">My queries</a>
-                            </li>
-
-                            <li ng-show="crowdMode" style="white-space: nowrap;"><a href="question.html">Answer
-                                questions</a>
-                            </li>
-                            <li ng-show="crowdMode" style="white-space: nowrap;"><a href="awards.html">Awards</a>
-                            </li>
-                            <li ng-show="loggedIn" style="white-space: nowrap;"><a href="Profile.html">My profile</a>
-                            </li>
-                            <li ng-show="loggedIn" style="white-space: nowrap;"><a href="logout.html">Logout</a></li>
-                            <li ng-show="!loggedIn" style="white-space: nowrap;"><a href="login.html">Login</a></li>
-                        </ul>
-                    </nav>
+                        <nav id="nav">
+                            <ul>
+                                <div ng-repeat="button in buttons">
+                                    <li ng-class="button.class" style="white-space: nowrap;"><a ng-href="button.href">{{button.text}}</a></li>
+                                </div>
+                            </ul>
+                        </nav>
                 </div>
 
             </header>
