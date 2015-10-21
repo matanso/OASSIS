@@ -101,7 +101,10 @@ public class mysqlConnector
             statement.setString(1, email);
             statement.setString(2, passhash);
             statement.setString(3, name);
-            return statement.execute();
+            statement.execute();
+            int count = statement.getUpdateCount();
+            System.out.println("Update count: " + count);
+            return count > 0;
         } catch (SQLException e)
         {
             e.printStackTrace();
