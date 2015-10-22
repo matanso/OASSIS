@@ -18,10 +18,11 @@ public class NaiveAlgorithmTest
 
 
         String queryString = "SELECT ?x ?y WHERE { ?x ?p ?y } ";
-
-		/*Test 1: load 2 ontologies each containing one tuple. Then userID 1 gets a question, answers it to make it an MSP
+		/*
+		Test 1: load 2 ontologies each containing one tuple. Then userID 1 gets a question, answers it to make it an MSP
         then he asks for another question, gets the second tuple makes it an MSP as well, then asks for another question
-		and with none left gets null*/
+		and with none left gets null
+		*/
 
         String ontology4 = "C:\\Users\\vain\\danny2\\eclipse_workspace\\sesame-getting-started\\foursquare.ttl";
         String ontology3 = "C:\\Users\\vain\\danny2\\eclipse_workspace\\sesame-getting-started\\threesquare.ttl";

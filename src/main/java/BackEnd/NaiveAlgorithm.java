@@ -21,8 +21,6 @@ public class NaiveAlgorithm extends TraversalModule
  * 0 for undecided, 1 for insignificant, 2 for significant.
  * "__supportDic" = a Map<String,Integer> where keys are userID in string format (only way FlexJson will work..) and its associated 
  * given support for said query.*/
-
-
     // +++++++++++++Fields Here+++++++++
     private static String DB_PATH;/*where the graphDb goes.*/
     public static GraphDatabaseService graphDB;
@@ -83,7 +81,7 @@ public class NaiveAlgorithm extends TraversalModule
 		/*TODO: maybe make the node making lazy, that is only make the node when the assignment is first asked.
 		 * input: userID
 		 * output: next assignment to query this user, null if none are left.*/
-        String userIDString = new Integer(userID).toString();
+        String userIDString = Integer.toString(userID);
         Random random = new Random();
         BindingSet randomKey = null;
         Node tempNode = null;

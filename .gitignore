@@ -2,3 +2,4 @@
 .openshift/
 .target/
 test.iml
+classes/

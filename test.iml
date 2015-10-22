@@ -22,12 +22,53 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: org.postgresql:postgresql:9.2-1003-jdbc4" level="project" />
-    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.25" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:3.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.json:json:20080701" level="project" />
     <orderEntry type="library" name="openrdf" level="project" />
     <orderEntry type="library" name="neo4j" level="project" />
     <orderEntry type="library" name="flexjson-2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.postgresql:postgresql:9.2-1003-jdbc4" level="project" />
+    <orderEntry type="library" name="Maven: net.iot-solutions.graphdb:jcypher:2.7.1" level="project" />
+    <orderEntry type="library" name="Maven: javax.json:javax.json-api:1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish:javax.json:1.0.4" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.jersey.core:jersey-client:2.5.1" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.jersey.core:jersey-common:2.5.1" level="project" />
+    <orderEntry type="library" name="Maven: javax.annotation:javax.annotation-api:1.2" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.hk2:osgi-resource-locator:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: javax.ws.rs:javax.ws.rs-api:2.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:14.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.hk2:hk2-api:2.2.0-b21" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.hk2:hk2-utils:2.2.0-b21" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.hk2.external:javax.inject:2.2.0-b21" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.hk2:hk2-locator:2.2.0-b21" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.hk2.external:asm-all-repackaged:2.2.0-b21" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish.hk2.external:cglib:2.2.0-b21" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-kernel:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-lucene-index:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-core:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-graph-algo:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-udc:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-graph-matching:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-cypher:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.10.5" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang:scala-reflect:2.10.5" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-cypher-compiler-1.9:2.0.4" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-cypher-compiler-2.0:2.0.4" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-cypher-compiler-2.1:2.1.8" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-cypher-compiler-2.2:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.parboiled:parboiled-scala_2.10:1.1.7" level="project" />
+    <orderEntry type="library" name="Maven: org.parboiled:parboiled-core:1.1.7" level="project" />
+    <orderEntry type="library" name="Maven: net.sf.opencsv:opencsv:2.3" level="project" />
+    <orderEntry type="library" name="Maven: com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.4" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-jmx:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-consistency-check:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-kernel:test-jar:tests:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-primitive-collections:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-io:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-csv:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-io:test-jar:tests:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-unsafe:2.2.2" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.25" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:3.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.json:json:20080701" level="project" />
   </component>
 </module>
