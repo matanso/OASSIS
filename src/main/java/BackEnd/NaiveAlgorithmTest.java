@@ -1,3 +1,4 @@
+/*
 package BackEnd;
 
 import java.io.File;
@@ -18,18 +19,21 @@ public class NaiveAlgorithmTest
 
 
         String queryString = "SELECT ?x ?y WHERE { ?x ?p ?y } ";
-		/*
+		*/
+/*
 		Test 1: load 2 ontologies each containing one tuple. Then userID 1 gets a question, answers it to make it an MSP
         then he asks for another question, gets the second tuple makes it an MSP as well, then asks for another question
 		and with none left gets null
-		*/
+		*//*
+
 
         String ontology4 = "C:\\Users\\vain\\danny2\\eclipse_workspace\\sesame-getting-started\\foursquare.ttl";
         String ontology3 = "C:\\Users\\vain\\danny2\\eclipse_workspace\\sesame-getting-started\\threesquare.ttl";
         File ontology4File = new File(ontology4);
         File ontology3File = new File(ontology3);
 		
-		/*SPARQLQueryManager.init(ontology3, "/Users/duanenickull/Software/neo4j-community-1.8.M01/");
+		*/
+/*SPARQLQueryManager.init(ontology3, "/Users/duanenickull/Software/neo4j-community-1.8.M01/");
 		SPARQLQueryManager.loadOntology(ontology4File);
 		SPARQLQueryManager.loadOntology(ontology3File);
 		
@@ -41,9 +45,12 @@ public class NaiveAlgorithmTest
 		naiveAlgo.update(assignment, 1, 31);
 		assignment = naiveAlgo.next(1);
 
-		System.out.println("yay");*/
+		System.out.println("yay");*//*
+
 		
-		/*test 1: ontology has 2 entries. userID 1 asks for question makes it significant then asks for another question and makes that significant too.*/
+		*/
+/*test 1: ontology has 2 entries. userID 1 asks for question makes it significant then asks for another question and makes that significant too.*//*
+
 
         Wrapper.init("/Users/duanenickull/Software/neo4j-community-1.8.M01/", "Users/vain/danny2/CrowdSourcingTest2/");
         Wrapper.loadOntology(ontology3);
@@ -89,3 +96,4 @@ public class NaiveAlgorithmTest
 
 
 }
+*/
